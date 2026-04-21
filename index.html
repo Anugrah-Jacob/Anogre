@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anogre | Premium Digital Solutions & Web Engineering</title>
+    <meta name="description" content="Anogre is a premium digital agency specializing in high-performance web engineering, SaaS platforms, and AI automation. Build fast, scale smart with Anugrah Jacob.">
+    <meta name="keywords" content="web engineering, digital agency, SaaS, AI automation, Next.js, React, Anogre, Anugrah Jacob">
+    <link rel="canonical" href="https://anogre.com/index.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anogre.com/">
+    <meta property="og:title" content="Anogre | Premium Digital Solutions & Web Engineering">
+    <meta property="og:description" content="Anogre is a premium digital agency specializing in high-performance web engineering, SaaS platforms, and AI automation.">
+    <meta property="og:image" content="https://anogre.com/anugrah.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://anogre.com/">
+    <meta property="twitter:title" content="Anogre | Premium Digital Solutions & Web Engineering">
+    <meta property="twitter:description" content="Anogre is a premium digital agency specializing in high-performance web engineering, SaaS platforms, and AI automation.">
+    <meta property="twitter:image" content="https://anogre.com/anugrah.jpg">
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: "#6C63FF",
+                        secondary: "#00D4FF",
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white dark:bg-[#0a0a0f] text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 bg-grid">
+
+    <!-- Preloader -->
+    <div id="preloader"><div class="preloader-spinner"></div></div>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <!-- Header -->
+    <header id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 px-6 py-4">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-6 py-3" aria-label="Main navigation">
+            <a href="index.html" class="text-2xl font-extrabold tracking-tight group" aria-label="Anogre Home">
+                <span class="gradient-text group-hover:brightness-125 transition-all">Anogre</span>
+            </a>
+            
+            <ul class="hidden md:flex items-center gap-8 font-medium text-sm nav-links">
+                <li><a href="index.html" class="hover:text-primary transition-colors active-nav-link">Home</a></li>
+                <li><a href="services.html" class="hover:text-primary transition-colors">Services</a></li>
+                <li><a href="portfolio.html" class="hover:text-primary transition-colors">Work</a></li>
+                <li><a href="pricing.html" class="hover:text-primary transition-colors">Pricing</a></li>
+                <li><a href="about.html" class="hover:text-primary transition-colors">About</a></li>
+                <li><a href="contact.html" class="hover:text-primary transition-colors">Contact</a></li>
+            </ul>
+
+            <div class="flex items-center gap-4">
+                <button id="theme-btn" class="p-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-xl transition-all" aria-label="Toggle theme"></button>
+                <a href="contact.html" class="hidden md:flex btn-premium !py-2.5 !px-6 !text-sm">Get Started</a>
+                <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-1" aria-label="Open mobile menu" aria-expanded="false">
+                    <span class="w-6 h-0.5 bg-current transition-all"></span>
+                    <span class="w-6 h-0.5 bg-current transition-all"></span>
+                    <span class="w-6 h-0.5 bg-current transition-all"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] hidden flex flex-col items-center justify-center gap-10 text-3xl font-black" aria-label="Mobile navigation">
+        <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+        <a href="services.html" class="hover:text-primary transition-colors">Services</a>
+        <a href="portfolio.html" class="hover:text-primary transition-colors">Work</a>
+        <a href="pricing.html" class="hover:text-primary transition-colors">Pricing</a>
+        <a href="about.html" class="hover:text-primary transition-colors">About</a>
+        <a href="contact.html" class="hover:text-primary transition-colors">Contact</a>
+        <a href="contact.html" class="btn-premium w-64 text-xl py-5 mt-6">Get Started</a>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="pt-32 md:pt-48 pb-20 px-6 overflow-hidden relative">
+            <!-- Floating Orbs -->
+            <div class="orb orb-1 hero-glow" aria-hidden="true"></div>
+            <div class="orb orb-2 hero-glow" aria-hidden="true"></div>
+            <div class="orb orb-3 hero-glow" aria-hidden="true"></div>
+            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 relative z-10">
+                <article class="flex-1 text-center lg:text-left reveal">
+                    <div class="inline-block px-4 py-1.5 mb-8 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs md:text-sm font-semibold">
+                        ✦ Premium Digital Agency — Powered by Innovation
+                    </div>
+                    <h1 class="heading-xl mb-8">
+                        Design <span class="gradient-text">Bold.</span><br>
+                        Build <span id="typed-text" class="gradient-text">Brilliant.</span><span class="typed-cursor"></span>
+                    </h1>
+                    <p class="body-lg mb-12 max-w-2xl mx-auto lg:mx-0">
+                        Anogre is a full-service digital agency crafting high-performance websites and AI-powered automation for the next generation of business.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 md:gap-6 mb-8">
+                        <a href="contact.html" class="btn-premium hover:shadow-lg hover:shadow-primary/30 w-full sm:w-auto">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                            Start Project
+                        </a>
+                        <a href="portfolio.html" class="btn-ghost w-full sm:w-auto">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                            View Showcase
+                        </a>
+                    </div>
+                    <div class="flex items-center justify-center lg:justify-start gap-4 text-xs md:text-sm font-bold opacity-60">
+                        <div class="flex -space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-slate-200 border-2 border-white dark:border-slate-900 flex items-center justify-center text-[10px]">SC</div>
+                            <div class="w-8 h-8 rounded-full bg-slate-300 border-2 border-white dark:border-slate-900 flex items-center justify-center text-[10px]">MK</div>
+                            <div class="w-8 h-8 rounded-full bg-slate-400 border-2 border-white dark:border-slate-900 flex items-center justify-center text-[10px]">JL</div>
+                        </div>
+                        Trusted by 50+ Global Clients
+                    </div>
+                </article>
+                <div class="flex-1 relative reveal w-full max-w-2xl lg:max-w-none">
+                    <figure class="relative glass p-4 rounded-[2.5rem] shadow-2xl rotate-2 hover:rotate-0 transition-all duration-700 group overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop" alt="Anogre Digital Agency" class="rounded-[2rem] w-full transform group-hover:scale-105 transition-transform duration-1000" loading="eager">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem]"></div>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Teaser -->
+        <section class="py-20 px-6 bg-slate-50/50 dark:bg-transparent">
+            <div class="max-w-7xl mx-auto">
+                <ul class="grid grid-cols-2 lg:grid-cols-4 gap-8 reveal">
+                    <li class="glass p-8 rounded-[3rem] text-center hover-card">
+                        <div class="text-4xl font-black gradient-text mb-2 counter" data-target="99" data-suffix="%">0</div>
+                        <p class="text-[10px] uppercase tracking-widest font-bold opacity-50">Success Rate</p>
+                    </li>
+                    <li class="glass p-8 rounded-[3rem] text-center hover-card">
+                        <div class="text-4xl font-black gradient-text mb-2 counter" data-target="250" data-suffix="+">0</div>
+                        <p class="text-[10px] uppercase tracking-widest font-bold opacity-50">Global Projects</p>
+                    </li>
+                    <li class="glass p-8 rounded-[3rem] text-center hover-card">
+                        <div class="text-4xl font-black gradient-text mb-2 counter" data-target="15" data-suffix="M">0</div>
+                        <p class="text-[10px] uppercase tracking-widest font-bold opacity-50">Users Reached</p>
+                    </li>
+                    <li class="glass p-8 rounded-[3rem] text-center hover-card">
+                        <div class="text-4xl font-black gradient-text mb-2 counter" data-target="24" data-suffix="/7">0</div>
+                        <p class="text-[10px] uppercase tracking-widest font-bold opacity-50">Expert Care</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Tech Stack Marquee -->
+        <section class="py-12 px-6 border-y border-white/5 bg-slate-50/10 dark:bg-transparent">
+            <div class="max-w-7xl mx-auto">
+                <p class="text-center text-xs uppercase tracking-[0.3em] font-bold opacity-30 mb-10">Powering solutions with cutting-edge technology</p>
+                <div class="marquee-wrapper">
+                    <div class="marquee-track">
+                        <span class="text-xl font-bold opacity-40 whitespace-nowrap mx-8">Next.js</span>
+                        <span class="text-xl font-bold opacity-40 whitespace-nowrap mx-8">React</span>
+                        <span class="text-xl font-bold opacity-40 whitespace-nowrap mx-8">Tailwind CSS</span>
+                        <span class="text-xl font-bold opacity-40 whitespace-nowrap mx-8">Node.js</span>
+                        <span class="text-xl font-bold opacity-40 whitespace-nowrap mx-8">TypeScript</span>
+                        <span class="text-xl font-bold opacity-40 whitespace-nowrap mx-8">PostgreSQL</span>
+                        <span class="text-xl font-bold opacity-40 whitespace-nowrap mx-8">Cloudflare</span>
+                        <span class="text-xl font-bold opacity-40 whitespace-nowrap mx-8">OpenAI</span>
+                        <span class="text-xl font-bold opacity-40 whitespace-nowrap mx-8">Supabase</span>
+                        <!-- Duplicate for seamless loop -->
+                        <span class="text-xl font-bold opacity-40 whitespace-nowrap mx-8">Next.js</span>
+                        <span class="text-xl font-bold opacity-40 whitespace-nowrap mx-8">React</span>
+                        <span class="text-xl font-bold opacity-40 whitespace-nowrap mx-8">Tailwind CSS</span>
+                        <span class="text-xl font-bold opacity-40 whitespace-nowrap mx-8">Node.js</span>
+                        <span class="text-xl font-bold opacity-40 whitespace-nowrap mx-8">TypeScript</span>
+                        <span class="text-xl font-bold opacity-40 whitespace-nowrap mx-8">PostgreSQL</span>
+                        <span class="text-xl font-bold opacity-40 whitespace-nowrap mx-8">Cloudflare</span>
+                        <span class="text-xl font-bold opacity-40 whitespace-nowrap mx-8">OpenAI</span>
+                        <span class="text-xl font-bold opacity-40 whitespace-nowrap mx-8">Supabase</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Teaser -->
+        <section class="py-32 px-6">
+            <div class="max-w-7xl mx-auto">
+                <header class="flex flex-col md:flex-row justify-between items-end mb-20 reveal">
+                    <div class="max-w-2xl">
+                        <h2 class="heading-lg mb-6">Innovative <span class="gradient-text">Solutions.</span></h2>
+                        <p class="body-lg">We combine high-end design with technical excellence to deliver products that dominate their markets.</p>
+                    </div>
+                    <a href="services.html" class="btn-ghost mt-8 md:mt-0">View All Services</a>
+                </header>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <article class="glass p-10 rounded-[2.5rem] hover-card reveal border border-primary/20">
+                        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-8">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Web Engineering & Architecture</h3>
+                        <p class="text-slate-500 dark:text-slate-400 mb-8 font-medium">We design and develop high-velocity web ecosystems using the latest modern stacks (Next.js, React, Node.js).</p>
+                        <ul class="space-y-3 mb-10 text-sm opacity-80">
+                            <li class="flex items-center gap-3">✓ API-First Architecture</li>
+                            <li class="flex items-center gap-3">✓ Progressive Web Apps (PWA)</li>
+                            <li class="flex items-center gap-3">✓ Edge-Native Performance</li>
+                            <li class="flex items-center gap-3">✓ Micro-Frontend Strategy</li>
+                        </ul>
+                        <a href="contact.html" class="inline-flex items-center gap-2 text-primary font-bold hover:underline">
+                            Start Building Now
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                    </article>
+                    <article class="glass p-10 rounded-[2.5rem] reveal opacity-50 relative grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden">
+                        <div class="absolute top-6 right-6 bg-slate-800 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest z-10">Upcoming</div>
+                        <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center text-secondary mb-8 opacity-40">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">SaaS Platforms</h3>
+                        <p class="text-slate-500 dark:text-slate-400 mb-8">Enterprise software solutions designed for massive scale and reliability.</p>
+                        <p class="text-xs font-bold uppercase tracking-tighter text-secondary opacity-60">System in development</p>
+                    </article>
+                    <article class="glass p-10 rounded-[2.5rem] reveal opacity-50 relative grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden">
+                        <div class="absolute top-6 right-6 bg-slate-800 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest z-10">Upcoming</div>
+                        <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-500 mb-8 opacity-40">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">AI Automation</h3>
+                        <p class="text-slate-500 dark:text-slate-400 mb-8">Intelligent systems that automate workflows and drive business efficiency.</p>
+                        <p class="text-xs font-bold uppercase tracking-tighter text-purple-500 opacity-60">Engine in training</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-32 px-6">
+            <div class="max-w-5xl mx-auto glass p-16 md:p-24 rounded-[4rem] text-center relative overflow-hidden reveal">
+                <div class="absolute -top-24 -left-24 w-64 h-64 bg-primary/20 rounded-full blur-[80px]" aria-hidden="true"></div>
+                <div class="absolute -bottom-24 -right-24 w-64 h-64 bg-secondary/20 rounded-full blur-[80px]" aria-hidden="true"></div>
+                <h2 class="heading-lg mb-8">Ready to build the <span class="gradient-text">Future?</span></h2>
+                <p class="body-lg mb-12 max-w-2xl mx-auto">Let's discuss how we can transform your vision into a market-leading digital product.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-6">
+                    <a href="contact.html" class="btn-premium px-12 py-5">Start a Project</a>
+                    <a href="about.html" class="btn-ghost px-12 py-5">Our Process</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Principles -->
+        <section class="py-32 px-6 bg-slate-50/50 dark:bg-transparent">
+            <div class="max-w-7xl mx-auto">
+                <header class="text-center mb-24 reveal">
+                    <h2 class="heading-lg mb-6">Our <span class="gradient-text">DNA.</span></h2>
+                    <p class="body-lg max-w-2xl mx-auto">High-performance engineering is not just what we do—it's how we think.</p>
+                </header>
+                <div class="grid md:grid-cols-3 gap-8 reveal-stagger">
+                    <article class="glass p-10 rounded-[3rem] reveal border border-primary/10">
+                        <div class="text-4xl mb-6">⚡</div>
+                        <h3 class="text-2xl font-bold mb-4">Extreme Speed</h3>
+                        <p class="text-slate-500 dark:text-slate-400 font-medium leading-relaxed">We optimize every line of code for performance. From TTFB to LCP, we ensure your product loads instantly across the globe.</p>
+                    </article>
+                    <article class="glass p-10 rounded-[3rem] reveal border border-primary/10" style="transition-delay: 200ms;">
+                        <div class="text-4xl mb-6">💎</div>
+                        <h3 class="text-2xl font-bold mb-4">Uncompromising Quality</h3>
+                        <p class="text-slate-500 dark:text-slate-400 font-medium leading-relaxed">Clean architecture and pixel-perfect design are non-negotiable. We build systems that are as beautiful as they are robust.</p>
+                    </article>
+                    <article class="glass p-10 rounded-[3rem] reveal border border-primary/10" style="transition-delay: 400ms;">
+                        <div class="text-4xl mb-6">🎯</div>
+                        <h3 class="text-2xl font-bold mb-4">Smart Simplicity</h3>
+                        <p class="text-slate-500 dark:text-slate-400 font-medium leading-relaxed">We eliminate bloat and unnecessary complexity. We deliver elegant solutions that focus on what truly drives results for your business.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-24 px-6 border-t border-slate-200 dark:border-white/5 bg-slate-50/20 dark:bg-[#0a0a0f]">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+                <article class="col-span-1 md:col-span-2 lg:col-span-1">
+                    <a href="index.html" class="text-3xl font-black tracking-tighter mb-8 block">
+                        <span class="gradient-text">ANOGRE</span>
+                    </a>
+                    <p class="body-md max-w-sm mb-10">Crafting high-velocity digital products and intelligent systems that define the future of business.</p>
+                    <div class="flex gap-4">
+                        <a href="contact.html" class="w-10 h-10 glass rounded-xl flex items-center justify-center social-icon" aria-label="Twitter"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                        <a href="contact.html" class="w-10 h-10 glass rounded-xl flex items-center justify-center social-icon" aria-label="Instagram"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                        <a href="contact.html" class="w-10 h-10 glass rounded-xl flex items-center justify-center social-icon" aria-label="LinkedIn"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    </div>
+                </article>
+                <nav aria-label="Solutions Footer">
+                    <h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-primary">Solutions</h4>
+                    <ul class="space-y-4 font-medium opacity-70">
+                        <li><a href="services.html" class="hover:text-primary transition-all">Web Engineering</a></li>
+                        <li><a href="services.html" class="hover:text-primary transition-all">SaaS Platforms</a></li>
+                        <li><a href="services.html" class="hover:text-primary transition-all">AI Automation</a></li>
+                        <li><a href="services.html" class="hover:text-primary transition-all">Cloud Architecture</a></li>
+                    </ul>
+                </nav>
+                <nav aria-label="Company Footer">
+                    <h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-primary">Company</h4>
+                    <ul class="space-y-4 font-medium opacity-70">
+                        <li><a href="about.html" class="hover:text-primary transition-all">Our Story</a></li>
+                        <li><a href="portfolio.html" class="hover:text-primary transition-all">Showcase</a></li>
+                        <li><a href="pricing.html" class="hover:text-primary transition-all">Pricing Plans</a></li>
+                        <li><a href="contact.html" class="hover:text-primary transition-all">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <article>
+                    <h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-primary">Reach Out</h4>
+                    <ul class="space-y-4 font-medium opacity-70">
+                        <li class="flex items-center gap-3">
+                            <span class="text-primary">✉</span> anugrahjacob777@gmail.com
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-primary">✆</span> +91 7012986540
+                        </li>
+                        <li>
+                            <a href="https://wa.me/917012986540" class="inline-flex items-center gap-2 text-[#25D366] font-bold mt-4 hover:brightness-110">
+                                <span>WhatsApp Support</span>
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.406.836 3.12 1.35 4.97 1.351 5.078 0 9.214-4.138 9.217-9.217.001-2.461-.958-4.772-2.7-6.515-1.741-1.74-4.051-2.696-6.512-2.697-5.078 0-9.213 4.137-9.217 9.217 0 1.761.488 3.473 1.411 4.975l-.93 3.398 3.484-.913z"/></svg>
+                            </a>
+                        </li>
+                    </ul>
+                </article>
+            </div>
+            <div class="pt-10 border-t border-slate-200 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-slate-500 text-sm font-medium">© <span class="current-year">2026</span> Anogre Global. All rights reserved.</p>
+                <div class="flex gap-8 text-xs font-bold uppercase tracking-widest opacity-40">
+                    <a href="contact.html" class="hover:text-primary transition-all">Privacy</a>
+                    <a href="contact.html" class="hover:text-primary transition-all">Terms</a>
+                    <a href="contact.html" class="hover:text-primary transition-all">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button id="scroll-top" aria-label="Scroll to top">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+    </button>
+    <script src="script.js"></script>
+</body>
+</html>
