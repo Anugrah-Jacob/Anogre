@@ -59,9 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', () => {
         if (nav) {
-            nav.classList.toggle('scrolled', window.scrollY > 20);
+            window.requestAnimationFrame(() => {
+                nav.classList.toggle('scrolled', window.scrollY > 20);
+            });
         }
-    });
+    }, { passive: true });
 
     // --- Mobile Menu ---
     const hamburger = document.getElementById('hamburger');
@@ -229,8 +231,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollBtn = document.getElementById('scroll-top');
     if (scrollBtn) {
         window.addEventListener('scroll', () => {
-            scrollBtn.classList.toggle('visible', window.scrollY > 600);
-        });
+            window.requestAnimationFrame(() => {
+                scrollBtn.classList.toggle('visible', window.scrollY > 600);
+            });
+        }, { passive: true });
         scrollBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -284,14 +288,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Parallax on Hero Glows ---
     const heroGlows = document.querySelectorAll('.hero-glow');
     if (heroGlows.length > 0) {
+        let rafId = null;
         window.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth - 0.5) * 30;
-            const y = (e.clientY / window.innerHeight - 0.5) * 30;
-            heroGlows.forEach((glow, i) => {
-                const factor = (i + 1) * 0.8;
-                glow.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+            if (rafId) cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(() => {
+                const x = (e.clientX / window.innerWidth - 0.5) * 30;
+                const y = (e.clientY / window.innerHeight - 0.5) * 30;
+                heroGlows.forEach((glow, i) => {
+                    const factor = (i + 1) * 0.8;
+                    glow.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+                });
             });
-        });
+        }, { passive: true });
     }
 
     // --- Form Validation & Submission ---

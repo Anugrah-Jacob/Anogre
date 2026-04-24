@@ -82,87 +82,80 @@
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
 
-    <!-- Header -->
-    <header
-      id="navbar"
-      class="fixed top-0 w-full z-50 transition-all duration-300 px-6 py-4"
-    >
-      <nav
-        class="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-6 py-3"
-      >
-        <a
-          href="../index.html"
-          class="text-2xl font-extrabold tracking-tight group"
-        >
-          <span class="gradient-text">Anogre</span>
-        </a>
-        <ul
-          class="hidden md:flex items-center gap-8 font-medium text-sm nav-links"
-        >
-          <li>
-            <a href="../index.html" class="hover:text-primary transition-colors"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a
-              href="../services.html"
-              class="hover:text-primary transition-colors"
-              >Services</a
-            >
-          </li>
-          <li>
-            <a
-              href="../portfolio.html"
-              class="hover:text-primary transition-colors"
-              >Work</a
-            >
-          </li>
-          <li>
-            <a
-              href="../blog.html"
-              class="hover:text-primary transition-colors active-nav-link"
-              >Blog</a
-            >
-          </li>
-          <li>
-            <a
-              href="../pricing.html"
-              class="hover:text-primary transition-colors"
-              >Pricing</a
-            >
-          </li>
-          <li>
-            <a href="../about.html" class="hover:text-primary transition-colors"
-              >About</a
-            >
-          </li>
-          <li>
-            <a
-              href="../contact.html"
-              class="hover:text-primary transition-colors"
-              >Contact</a
-            >
-          </li>
-        </ul>
-        <div class="flex items-center gap-4">
-          <button
-            id="theme-btn"
-            class="p-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-xl transition-all"
-          ></button>
-          <a
-            href="../contact.html"
-            class="hidden md:flex btn-premium !py-2.5 !px-6 !text-sm"
-            >Get Started</a
-          >
-          <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-1">
-            <span class="w-6 h-0.5 bg-current"></span>
-            <span class="w-6 h-0.5 bg-current"></span>
-            <span class="w-6 h-0.5 bg-current"></span>
-          </button>
-        </div>
-      </nav>
+        <!-- Header -->
+    <header id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 px-6 py-4">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-6 py-3" aria-label="Main navigation">
+            <a href="../index.html" class="text-2xl font-extrabold tracking-tight group" aria-label="Anogre Home">
+                <span class="gradient-text group-hover:brightness-125 transition-all">Anogre</span>
+            </a>
+            
+            <ul class="hidden md:flex items-center gap-8 font-medium text-sm nav-links">
+                <li><a href="../index.html" class="hover:text-primary transition-colors">Home</a></li>
+                <li><a href="../services.html" class="hover:text-primary transition-colors">Services</a></li>
+                <li><a href="../portfolio.html" class="hover:text-primary transition-colors">Work</a></li>
+                <li><a href="../blog.html" class="hover:text-primary transition-colors active-nav-link">Blog</a></li>
+                <li><a href="../pricing.html" class="hover:text-primary transition-colors">Pricing</a></li>
+                <li><a href="../about.html" class="hover:text-primary transition-colors">About</a></li>
+                <li><a href="../contact.html" class="hover:text-primary transition-colors">Contact</a></li>
+            </ul>
+
+            <div class="flex items-center gap-4">
+                <button id="theme-btn" class="p-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-xl transition-all" aria-label="Toggle theme"></button>
+                <a href="../contact.html" class="hidden md:flex btn-premium !py-2.5 !px-6 !text-sm">Get Started</a>
+                <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-1" aria-label="Open mobile menu" aria-expanded="false">
+                    <span class="w-6 h-0.5 bg-current transition-all"></span>
+                    <span class="w-6 h-0.5 bg-current transition-all"></span>
+                    <span class="w-6 h-0.5 bg-current transition-all"></span>
+                </button>
+            </div>
+        </nav>
     </header>
+
+    <!-- Mobile Menu -->
+    <nav id="mobile-menu" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/80 backdrop-blur-xl opacity-0 scale-95 pointer-events-none transition-all duration-300" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+        <button id="close-menu" class="absolute top-8 right-8 text-4xl p-2 hover:text-primary transition-colors" aria-label="Close menu">
+            &times;
+        </button>
+
+        <div class="absolute top-8 left-8 text-2xl font-black tracking-tighter">
+            <span class="gradient-text">ANOGRE</span>
+        </div>
+
+        <div class="flex flex-col items-center gap-8 w-full max-w-xs">
+            <a href="../index.html" class="mobile-link flex items-center justify-center gap-3 text-2xl font-semibold hover:text-primary active:scale-95 transition-all w-full">
+                <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                Home
+            </a>
+            <a href="../services.html" class="mobile-link flex items-center justify-center gap-3 text-2xl font-semibold hover:text-primary active:scale-95 transition-all w-full">
+                <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                Services
+            </a>
+            <a href="../portfolio.html" class="mobile-link flex items-center justify-center gap-3 text-2xl font-semibold hover:text-primary active:scale-95 transition-all w-full">
+                <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                Work
+            </a>
+            <a href="../blog.html" class="mobile-link flex items-center justify-center gap-3 text-2xl font-semibold hover:text-primary active:scale-95 transition-all w-full">
+                <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2zM14 4v4h4"/></svg>
+                Blog
+            </a>
+            <a href="../pricing.html" class="mobile-link flex items-center justify-center gap-3 text-2xl font-semibold hover:text-primary active:scale-95 transition-all w-full">
+                <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Pricing
+            </a>
+            <a href="../about.html" class="mobile-link flex items-center justify-center gap-3 text-2xl font-semibold hover:text-primary active:scale-95 transition-all w-full">
+                <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                About
+            </a>
+            <a href="../contact.html" class="mobile-link flex items-center justify-center gap-3 text-2xl font-semibold hover:text-primary active:scale-95 transition-all w-full">
+                <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                Contact
+            </a>
+        </div>
+
+        <div class="mt-12 border-t border-white/10 pt-8 w-full max-w-xs text-center">
+            <a href="../contact.html" class="btn-premium w-full text-xl py-4">Get Started</a>
+        </div>
+    </nav>
 
     <main class="pt-48 pb-20 px-6">
       <article class="max-w-4xl mx-auto">
@@ -319,15 +312,67 @@
       </article>
     </main>
 
-    <!-- Footer -->
-    <footer
-      class="py-24 px-6 border-t border-slate-200 dark:border-white/5 bg-slate-50/20 dark:bg-[#0a0a0f]"
-    >
-      <div class="max-w-7xl mx-auto text-center">
-        <p class="text-slate-500 text-sm font-medium">
-          Â© 2026 Anogre Global. All rights reserved.
-        </p>
-      </div>
+        <!-- Footer -->
+    <footer class="py-24 px-6 border-t border-slate-200 dark:border-white/5 bg-slate-50/20 dark:bg-[#0a0a0f]">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+                <article class="col-span-1 md:col-span-2 lg:col-span-1">
+                    <a href="../index.html" class="text-3xl font-black tracking-tighter mb-8 block">
+                        <span class="gradient-text">ANOGRE</span>
+                    </a>
+                    <p class="body-md max-w-sm mb-10">Crafting high-velocity digital products and intelligent systems that define the future of business.</p>
+                    <div class="flex gap-4">
+                        <a href="../contact.html" class="w-10 h-10 glass rounded-xl flex items-center justify-center social-icon" aria-label="Twitter"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                        <a href="../contact.html" class="w-10 h-10 glass rounded-xl flex items-center justify-center social-icon" aria-label="Instagram"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                        <a href="../contact.html" class="w-10 h-10 glass rounded-xl flex items-center justify-center social-icon" aria-label="LinkedIn"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    </div>
+                </article>
+                <nav aria-label="Solutions Footer">
+                    <h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-primary">Solutions</h4>
+                    <ul class="space-y-4 font-medium opacity-70">
+                        <li><a href="../services.html" class="hover:text-primary transition-all">Web Engineering</a></li>
+                        <li><a href="../services.html" class="hover:text-primary transition-all">SaaS Platforms</a></li>
+                        <li><a href="../services.html" class="hover:text-primary transition-all">AI Automation</a></li>
+                        <li><a href="../services.html" class="hover:text-primary transition-all">Cloud Architecture</a></li>
+                    </ul>
+                </nav>
+                <nav aria-label="Company Footer">
+                    <h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-primary">Company</h4>
+                    <ul class="space-y-4 font-medium opacity-70">
+                        <li><a href="../about.html" class="hover:text-primary transition-all">Our Story</a></li>
+                        <li><a href="../portfolio.html" class="hover:text-primary transition-all">Showcase</a></li>
+                        <li><a href="../blog.html" class="hover:text-primary transition-all">Insights & Blog</a></li>
+                        <li><a href="../pricing.html" class="hover:text-primary transition-all">Pricing Plans</a></li>
+                        <li><a href="../contact.html" class="hover:text-primary transition-all">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <article>
+                    <h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-primary">Reach Out</h4>
+                    <ul class="space-y-4 font-medium opacity-70">
+                        <li class="flex items-center gap-3">
+                            <span class="text-primary">?</span> anugrahjacob777@gmail.com
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-primary">?</span> +91 7012986540
+                        </li>
+                        <li>
+                            <a href="https://wa.me/917012986540" class="inline-flex items-center gap-2 text-[#25D366] font-bold mt-4 hover:brightness-110">
+                                <span>WhatsApp Support</span>
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.406.836 3.12 1.35 4.97 1.351 5.078 0 9.214-4.138 9.217-9.217.001-2.461-.958-4.772-2.7-6.515-1.741-1.74-4.051-2.696-6.512-2.697-5.078 0-9.213 4.137-9.217 9.217 0 1.761.488 3.473 1.411 4.975l-.93 3.398 3.484-.913z"/></svg>
+                            </a>
+                        </li>
+                    </ul>
+                </article>
+            </div>
+            <div class="pt-10 border-t border-slate-200 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-slate-500 text-sm font-medium">© <span class="current-year">2026</span> Anogre Global. All rights reserved.</p>
+                <div class="flex gap-8 text-xs font-bold uppercase tracking-widest opacity-40">
+                    <a href="../contact.html" class="hover:text-primary transition-all">Privacy</a>
+                    <a href="../contact.html" class="hover:text-primary transition-all">Terms</a>
+                    <a href="../contact.html" class="hover:text-primary transition-all">Cookies</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script src="../script.js"></script>
