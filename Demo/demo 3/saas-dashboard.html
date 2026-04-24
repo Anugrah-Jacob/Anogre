@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NovaStack Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bg: "#f7f8fb",
+              surface: "#ffffff",
+              text: "#1f2937",
+              muted: "#6b7280",
+              primary: "#2563EB",
+              secondary: "#6B7280",
+              accent: "#FACC15",
+              border: "#e5e7eb",
+            },
+            fontFamily: {
+              sans: [
+                "Inter",
+                "system-ui",
+                "-apple-system",
+                "Segoe UI",
+                "Roboto",
+                "Arial",
+                "sans-serif",
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      /* Skeleton shimmer */
+      .skeleton {
+        background: linear-gradient(
+          -90deg,
+          #f0f0f0 25%,
+          #e5e5e5 37%,
+          #f0f0f0 63%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 1.2s infinite;
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: 100% 0;
+        }
+        100% {
+          background-position: -100% 0;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-bg text-text min-h-screen flex">
+    <!-- Sidebar -->
+    <aside
+      id="sidebar"
+      class="w-60 bg-surface border-r border-border flex-shrink-0 hidden md:flex flex-col sticky top-0 h-screen overflow-y-auto"
+      aria-label="Main Navigation"
+    >
+      <div class="p-4">
+        <div class="font-bold text-lg px-3 py-2 rounded-lg">NovaStack</div>
+      </div>
+      <nav class="mt-4 px-2" aria-label="Main navigation list">
+        <ul class="space-y-1">
+          <li
+            class="px-3 py-2.5 rounded-lg bg-white border border-border font-semibold text-sm"
+            aria-current="page"
+          >
+            Dashboard
+          </li>
+          <li
+            class="px-3 py-2.5 rounded-lg text-sm text-muted hover:bg-gray-50 cursor-pointer"
+          >
+            Analytics
+          </li>
+          <li
+            class="px-3 py-2.5 rounded-lg text-sm text-muted hover:bg-gray-50 cursor-pointer"
+          >
+            Projects
+          </li>
+          <li
+            class="px-3 py-2.5 rounded-lg text-sm text-muted hover:bg-gray-50 cursor-pointer"
+          >
+            Settings
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Area -->
+    <div class="flex-1 flex flex-col min-h-screen">
+      <!-- Topbar -->
+      <header
+        class="h-16 bg-surface border-b border-border flex items-center px-4 md:px-6"
+        aria-label="Top Bar"
+      >
+        <button
+          id="menuToggle"
+          class="md:hidden p-2 mr-2 rounded-lg hover:bg-gray-50"
+          aria-label="Toggle navigation"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+        <div class="flex-1"></div>
+        <div class="flex items-center gap-3">
+          <button
+            class="p-2 rounded-lg border border-border hover:bg-gray-50"
+            aria-label="Notifications"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+              ></path>
+            </svg>
+          </button>
+          <div
+            class="flex items-center gap-2 cursor-pointer"
+            role="button"
+            aria-label="Profile"
+          >
+            <span
+              class="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center text-sm font-medium"
+              >U</span
+            >
+            <span class="text-sm font-medium hidden sm:inline">User</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <main class="p-4 md:p-6 space-y-6" role="main">
+        <!-- Cards Grid -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+        >
+          <!-- Analytics Card -->
+          <section
+            class="bg-surface border border-border rounded-xl p-4"
+            aria-label="Analytics"
+          >
+            <div class="mb-3">
+              <div class="font-bold text-base">Analytics</div>
+              <div class="text-xs text-muted mt-0.5">
+                Key performance indicators
+              </div>
+            </div>
+            <div id="analyticsContent">
+              <!-- Loading state -->
+              <div class="skeleton h-24 rounded-lg" aria-busy="true"></div>
+            </div>
+          </section>
+
+          <!-- Projects Card -->
+          <section
+            class="bg-surface border border-border rounded-xl p-4"
+            aria-label="Active Projects"
+          >
+            <div class="mb-3">
+              <div class="font-bold text-base">Active Projects</div>
+              <div class="text-xs text-muted mt-0.5">
+                Overview of current initiatives
+              </div>
+            </div>
+            <div id="projectsContent">
+              <div class="skeleton h-20 rounded-lg" aria-busy="true"></div>
+            </div>
+          </section>
+
+          <!-- Performance Card -->
+          <section
+            class="bg-surface border border-border rounded-xl p-4"
+            aria-label="Performance Metrics"
+          >
+            <div class="mb-3">
+              <div class="font-bold text-base">Performance Metrics</div>
+              <div class="text-xs text-muted mt-0.5">
+                System health at a glance
+              </div>
+            </div>
+            <div id="performanceContent">
+              <div class="skeleton h-20 rounded-lg" aria-busy="true"></div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      // State
+      let loading = true;
+      const state = { projects: [], metrics: {} };
+
+      // Simulate data fetching
+      setTimeout(() => {
+        state.projects = [
+          { name: "Acme Bank", progress: 0.62 },
+          { name: "Nova Analytics", progress: 0.25 },
+          { name: "ZenDocs", progress: 0.9 },
+        ];
+        state.metrics = {
+          throughput: "1.8k req/s",
+          latency: "128 ms",
+          error: "0.12%",
+        };
+        loading = false;
+        render();
+      }, 900);
+
+      // Render functions
+      function renderAnalytics() {
+        if (loading) {
+          return '<div class="skeleton h-24 rounded-lg" aria-busy="true"></div>';
+        }
+        return `
+        <div class="flex items-center justify-between">
+          <div class="space-y-1">
+            <div class="text-2xl font-bold">$18.4k</div>
+            <div class="text-xs text-muted">Revenue</div>
+          </div>
+          <div class="space-y-1">
+            <div class="text-2xl font-bold">4.2k</div>
+            <div class="text-xs text-muted">Active Users</div>
+          </div>
+          <div>
+            <svg width="80" height="32" viewBox="0 0 80 32" aria-label="sparkline">
+              <path d="M0 28 L13 22 L26 24 L39 14 L52 8 L65 12 L80 4" fill="none" stroke="#2563EB" stroke-width="2" />
+            </svg>
+          </div>
+        </div>
+      `;
+      }
+
+      function renderProjects() {
+        if (loading) {
+          return '<div class="skeleton h-20 rounded-lg" aria-busy="true"></div>';
+        }
+        if (!state.projects.length) {
+          return `
+          <div class="text-center py-6 text-muted">
+            <div class="text-2xl mb-1">📭</div>
+            <div class="font-semibold text-sm">No active projects</div>
+            <div class="text-xs mt-1">Create a project to get started</div>
+          </div>
+        `;
+        }
+        return `
+        <div class="space-y-3">
+          ${state.projects
+            .map(
+              (p) => `
+            <div class="flex items-center gap-2">
+              <span class="text-sm flex-1">${p.name}</span>
+              <div class="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-primary to-secondary" style="width: ${Math.round(p.progress * 100)}%"></div>
+              </div>
+            </div>
+          `,
+            )
+            .join("")}
+        </div>
+      `;
+      }
+
+      function renderPerformance() {
+        if (loading) {
+          return '<div class="skeleton h-20 rounded-lg" aria-busy="true"></div>';
+        }
+        const items = [
+          { label: "Throughput", value: state.metrics.throughput },
+          { label: "Latency", value: state.metrics.latency },
+          { label: "Error Rate", value: state.metrics.error },
+        ];
+        return `
+        <div class="grid grid-cols-3 gap-3">
+          ${items
+            .map(
+              (it) => `
+            <div class="border border-border rounded-lg p-2 text-center">
+              <div class="text-base font-bold">${it.value}</div>
+              <div class="text-xs text-muted">${it.label}</div>
+            </div>
+          `,
+            )
+            .join("")}
+        </div>
+      `;
+      }
+
+      function render() {
+        document.getElementById("analyticsContent").innerHTML =
+          renderAnalytics();
+        document.getElementById("projectsContent").innerHTML = renderProjects();
+        document.getElementById("performanceContent").innerHTML =
+          renderPerformance();
+      }
+
+      // Mobile menu toggle
+      document.getElementById("menuToggle").addEventListener("click", () => {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>

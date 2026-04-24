@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Next.js in 2026: Edge-Native Performance | Anogre Blog</title>
+    <meta
+      name="description"
+      content="Mastering the modern web stack in 2026. Deep dive into server-first rendering and edge computing with Next.js."
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/ChatGPT_Image_Apr_22__2026__07_54_52_AM-removebg-preview.png"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://anogre.com/blog/nextjs-2026-performance.html"
+    />
+    <meta
+      property="og:title"
+      content="Next.js in 2026: Edge-Native Performance | Anogre Blog"
+    />
+    <meta
+      property="og:description"
+      content="Mastering the modern web stack in 2026. Deep dive into server-first rendering and edge computing with Next.js."
+    />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https://anogre.com/blog/nextjs-2026-performance.html"
+    />
+    <meta
+      property="twitter:title"
+      content="Next.js in 2026: Edge-Native Performance | Anogre Blog"
+    />
+    <meta
+      property="twitter:description"
+      content="Mastering the modern web stack in 2026."
+    />
+    <meta
+      property="twitter:image"
+      content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Outfit", "sans-serif"] },
+            colors: { primary: "#6C63FF", secondary: "#00D4FF" },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-white dark:bg-[#0a0a0f] text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 bg-grid"
+  >
+    <div id="preloader"><div class="preloader-spinner"></div></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <!-- Header -->
+    <header
+      id="navbar"
+      class="fixed top-0 w-full z-50 transition-all duration-300 px-6 py-4"
+    >
+      <nav
+        class="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-6 py-3"
+      >
+        <a
+          href="../index.html"
+          class="text-2xl font-extrabold tracking-tight group"
+        >
+          <span class="gradient-text">Anogre</span>
+        </a>
+        <ul
+          class="hidden md:flex items-center gap-8 font-medium text-sm nav-links"
+        >
+          <li>
+            <a href="../index.html" class="hover:text-primary transition-colors"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="../services.html"
+              class="hover:text-primary transition-colors"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a
+              href="../portfolio.html"
+              class="hover:text-primary transition-colors"
+              >Work</a
+            >
+          </li>
+          <li>
+            <a
+              href="../blog.html"
+              class="hover:text-primary transition-colors active-nav-link"
+              >Blog</a
+            >
+          </li>
+          <li>
+            <a
+              href="../pricing.html"
+              class="hover:text-primary transition-colors"
+              >Pricing</a
+            >
+          </li>
+          <li>
+            <a href="../about.html" class="hover:text-primary transition-colors"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="../contact.html"
+              class="hover:text-primary transition-colors"
+              >Contact</a
+            >
+          </li>
+        </ul>
+        <div class="flex items-center gap-4">
+          <button
+            id="theme-btn"
+            class="p-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-xl transition-all"
+          ></button>
+          <a
+            href="../contact.html"
+            class="hidden md:flex btn-premium !py-2.5 !px-6 !text-sm"
+            >Get Started</a
+          >
+          <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-1">
+            <span class="w-6 h-0.5 bg-current"></span>
+            <span class="w-6 h-0.5 bg-current"></span>
+            <span class="w-6 h-0.5 bg-current"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="pt-48 pb-20 px-6">
+      <article class="max-w-4xl mx-auto">
+        <header class="mb-16 reveal text-center">
+          <div
+            class="inline-block px-4 py-1.5 mb-6 rounded-full border border-purple-500/20 bg-purple-500/5 text-purple-500 text-xs font-bold uppercase tracking-widest"
+          >
+            Web Dev
+          </div>
+          <h1 class="heading-xl mb-8">
+            Next.js in 2026:
+            <span class="gradient-text">Edge-Native</span> Performance
+          </h1>
+          <div
+            class="flex items-center justify-center gap-6 text-sm opacity-60 font-bold"
+          >
+            <span>By Anugrah Jacob</span>
+            <span>•</span>
+            <time>April 15, 2026</time>
+            <span>•</span>
+            <span>5 min read</span>
+          </div>
+        </header>
+
+        <figure class="mb-16 reveal">
+          <img
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop"
+            alt="Next.js Performance"
+            class="w-full h-[500px] object-cover rounded-[3rem] shadow-2xl"
+          />
+        </figure>
+
+        <div
+          class="prose prose-lg dark:prose-invert max-w-none reveal space-y-8 text-slate-500 dark:text-slate-400 leading-relaxed"
+        >
+          <p class="text-xl text-slate-900 dark:text-white font-medium">
+            As we navigate through 2026, Next.js remains the gold standard for
+            high-velocity web engineering. However, the way we use it has
+            evolved significantly, with a heavy emphasis on edge-native
+            performance.
+          </p>
+
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-12">
+            The Shift to Server-First
+          </h2>
+          <p>
+            In the current landscape, the "client-side first" approach is a
+            relic of the past. Server Components have matured into the default
+            choice for professional projects, allowing us to ship
+            zero-JavaScript by default and significantly reducing Time to
+            Interactive (TTI).
+          </p>
+
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-12">
+            Edge-Native Inference & Middleware
+          </h2>
+          <p>
+            One of the most exciting developments in 2026 is the ability to run
+            complex business logic and even AI inference directly at the edge.
+            By utilizing Edge Middleware, we can personalize user experiences in
+            real-time based on geography, device, and behavior without ever
+            touching the main origin server.
+          </p>
+
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-12">
+            TypeScript: Non-Negotiable
+          </h2>
+          <p>
+            In 2026, TypeScript isn't just a preference; it's the professional
+            baseline. The end-to-end type safety provided by modern Next.js
+            configurations ensures that large-scale applications remain robust
+            and maintainable as they grow.
+          </p>
+
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-12">
+            Final Thoughts
+          </h2>
+          <p>
+            Building with Next.js in 2026 requires a deep understanding of these
+            edge-native patterns. At Anogre, we pride ourselves on staying at
+            the forefront of these technical advancements, ensuring that every
+            product we build is as fast, secure, and scalable as the technology
+            allows.
+          </p>
+        </div>
+
+        <footer class="mt-20 pt-12 border-t border-white/5 reveal">
+          <div
+            class="flex flex-col md:flex-row justify-between items-center gap-8"
+          >
+            <div class="flex items-center gap-4">
+              <img
+                src="../anugrah.jpg"
+                alt="Anugrah"
+                class="w-16 h-16 rounded-full object-cover border-2 border-primary"
+              />
+              <div>
+                <h4 class="font-bold text-lg">Anugrah Jacob</h4>
+                <p class="text-sm opacity-60">
+                  Founder & Chief Engineer at Anogre
+                </p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </article>
+    </main>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

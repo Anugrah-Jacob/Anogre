@@ -38,14 +38,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-links a');
 
     // Active Page Highlighting
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    const cleanPath = currentPath.replace('.html', '');
+    const currentPath = window.location.pathname;
     
     navLinks.forEach(link => {
-        const linkPath = link.getAttribute('href');
+        const linkHref = link.getAttribute('href');
+        // Handle both root and subfolder relative paths
+        const linkPath = linkHref.replace('../', '');
         const cleanLinkPath = linkPath.replace('.html', '');
         
-        if (cleanLinkPath === cleanPath || (cleanPath === '' && cleanLinkPath === 'index')) {
+        const isActive = (currentPath.includes(cleanLinkPath) && cleanLinkPath !== 'index') || 
+                         (currentPath.endsWith('/') && cleanLinkPath === 'index') ||
+                         (currentPath.endsWith('index.html') && cleanLinkPath === 'index');
+
+        if (isActive) {
             link.classList.add('text-primary', 'active-nav-link', 'font-bold');
         } else {
             link.classList.remove('text-primary', 'active-nav-link', 'font-bold');
@@ -61,24 +66,92 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Mobile Menu ---
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
+    const closeMenuBtn = document.getElementById('close-menu');
+    const mobileLinks = mobileMenu?.querySelectorAll('a');
     
-    const toggleMenu = () => {
+    const toggleMenu = (forceState) => {
         if (!mobileMenu || !hamburger) return;
-        const isOpen = !mobileMenu.classList.contains('hidden');
-        if (isOpen) {
-            mobileMenu.classList.add('hidden');
+        const isCurrentlyOpen = !mobileMenu.classList.contains('opacity-0');
+        const isOpen = forceState !== undefined ? forceState : !isCurrentlyOpen;
+        
+        if (!isOpen) {
+            mobileMenu.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+            mobileMenu.classList.remove('opacity-100', 'scale-100');
             hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
             document.body.style.overflow = '';
         } else {
-            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+            mobileMenu.classList.add('opacity-100', 'scale-100');
             hamburger.classList.add('active');
+            hamburger.setAttribute('aria-expanded', 'true');
             document.body.style.overflow = 'hidden';
+            
+            // Focus the first link or close button after animation
+            setTimeout(() => {
+                const firstLink = mobileMenu.querySelector('a');
+                if (firstLink) firstLink.focus();
+            }, 300);
         }
     };
 
     if (hamburger && mobileMenu) {
-        hamburger.onclick = toggleMenu;
-        mobileMenu.querySelectorAll('a').forEach(a => a.onclick = toggleMenu);
+        hamburger.onclick = () => toggleMenu();
+        if (closeMenuBtn) closeMenuBtn.onclick = () => toggleMenu(false);
+        mobileLinks?.forEach(a => a.onclick = () => toggleMenu(false));
+
+        // Click outside to close
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) toggleMenu(false);
+        });
+
+        // Close on ESC
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('opacity-0')) {
+                toggleMenu(false);
+            }
+        });
+
+        // Focus Trap
+        mobileMenu.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                const focusableElements = mobileMenu.querySelectorAll('a, button');
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                if (e.shiftKey) { // Shift + Tab
+                    if (document.activeElement === firstElement) {
+                        lastElement.focus();
+                        e.preventDefault();
+                    }
+                } else { // Tab
+                    if (document.activeElement === lastElement) {
+                        firstElement.focus();
+                        e.preventDefault();
+                    }
+                }
+            }
+        });
+    }
+
+    // Active Mobile Page Highlighting
+    if (mobileLinks) {
+        mobileLinks.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            if (!linkHref) return;
+            const linkPath = linkHref.replace('../', '');
+            const cleanLinkPath = linkPath.replace('.html', '');
+            
+            const isActive = (currentPath.includes(cleanLinkPath) && cleanLinkPath !== 'index') || 
+                             (currentPath.endsWith('/') && cleanLinkPath === 'index') ||
+                             (currentPath.endsWith('index.html') && cleanLinkPath === 'index');
+
+            if (isActive) {
+                link.classList.add('active-mobile-link');
+            } else {
+                link.classList.remove('active-mobile-link');
+            }
+        });
     }
 
     // --- Scroll Reveal (IntersectionObserver) ---

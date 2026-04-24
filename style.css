@@ -170,31 +170,48 @@ section { padding-top: 8rem; padding-bottom: 8rem; }
 
 /* --- Mobile Menu --- */
 #mobile-menu {
-    transition: all 0.5s var(--ease-out-expo);
+    transition: all 0.4s var(--ease-out-expo);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    background: rgba(10, 10, 15, 0.95);
-    z-index: 9999;
-}
-#mobile-menu.hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: scale(0.95) translateY(-20px);
-}
-#mobile-menu:not(.hidden) {
-    opacity: 1;
-    transform: scale(1) translateY(0);
 }
 
 #mobile-menu a {
     position: relative;
-    padding: 1rem;
+    padding: 0.5rem;
     transition: all 0.3s ease;
 }
-#mobile-menu a:hover {
+
+#mobile-menu a:hover,
+#mobile-menu a.active-mobile-link {
     color: var(--primary);
-    transform: translateX(10px);
 }
+
+#mobile-menu a.active-mobile-link {
+    font-weight: 700;
+    text-shadow: 0 0 15px rgba(108, 99, 255, 0.4);
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.mobile-link {
+    opacity: 0;
+    transform: translateY(15px);
+}
+
+#mobile-menu:not(.opacity-0) .mobile-link {
+    animation: fadeUp 0.4s ease forwards;
+}
+
+#mobile-menu:not(.opacity-0) .mobile-link:nth-child(1) { animation-delay: 0.1s; }
+#mobile-menu:not(.opacity-0) .mobile-link:nth-child(2) { animation-delay: 0.15s; }
+#mobile-menu:not(.opacity-0) .mobile-link:nth-child(3) { animation-delay: 0.2s; }
+#mobile-menu:not(.opacity-0) .mobile-link:nth-child(4) { animation-delay: 0.25s; }
+#mobile-menu:not(.opacity-0) .mobile-link:nth-child(5) { animation-delay: 0.3s; }
+#mobile-menu:not(.opacity-0) .mobile-link:nth-child(6) { animation-delay: 0.35s; }
+#mobile-menu:not(.opacity-0) .mobile-link:nth-child(7) { animation-delay: 0.4s; }
 
 /* --- Responsive Layout Adjustments --- */
 @media (max-width: 1024px) {

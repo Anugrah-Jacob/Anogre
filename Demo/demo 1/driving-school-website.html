@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DriveSafe Academy | Professional Driving School</title>
+    <!-- DaisyUI CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/daisyui@4.12.10/dist/full.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .hover-glow:hover {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+        transition: all 0.3s ease;
+      }
+      .service-card {
+        transition: all 0.3s ease;
+      }
+      .service-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+      .testimonial-card {
+        transition: all 0.3s ease;
+      }
+      .testimonial-card:hover {
+        transform: scale(1.02);
+      }
+      .custom-range::-webkit-slider-thumb {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        background: #3b82f6;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: all 0.3s;
+      }
+      .custom-range::-webkit-slider-thumb:hover {
+        transform: scale(1.2);
+      }
+      .whatsapp-float {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 50;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: #25d366;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        transition: all 0.3s ease;
+      }
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+      }
+      .loading-bar {
+        background: linear-gradient(
+          90deg,
+          #e2e8f0 0%,
+          #f1f5f9 50%,
+          #e2e8f0 100%
+        );
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+      }
+      @keyframes loading {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+      .fade-in {
+        animation: fadeIn 0.6s ease-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Navbar -->
+    <nav
+      class="fixed w-full top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center space-x-2">
+            <div
+              class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center"
+            >
+              <span class="text-white font-bold text-lg">🚗</span>
+            </div>
+            <span class="font-bold text-xl text-gray-900">DriveSafe</span>
+          </div>
+          <div class="hidden md:flex space-x-6">
+            <a
+              href="#"
+              class="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              >Home</a
+            >
+            <a
+              href="#services"
+              class="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              >Services</a
+            >
+            <a
+              href="#about"
+              class="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              >Why Us</a
+            >
+            <a
+              href="#testimonials"
+              class="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              >Testimonials</a
+            >
+            <a
+              href="#contact"
+              class="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              >Contact</a
+            >
+          </div>
+          <button
+            id="contactBtn"
+            class="hidden md:block bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-300 hover:shadow-lg"
+          >
+            Contact Us
+          </button>
+          <button class="md:hidden text-gray-700 hover:text-blue-600">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="min-h-screen flex items-center justify-center relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-blue-50"
+      ></div>
+      <div class="relative z-10 text-center px-4 max-w-4xl fade-in">
+        <h1
+          class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+        >
+          Learn Driving with
+          <span class="text-blue-600">Confidence</span>
+        </h1>
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          Professional driving instructors, modern fleet, and personalized
+          training to help you become a safe and confident driver.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#contact"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1"
+          >
+            Start Your Journey
+          </a>
+          <a
+            href="#about"
+            class="border-2 border-blue-600 hover:bg-blue-600 hover:text-white text-blue-600 px-8 py-3 rounded-lg font-medium transition-all duration-300"
+          >
+            Learn More
+          </a>
+        </div>
+      </div>
+      <div class="absolute bottom-20 right-10 opacity-20">
+        <svg
+          class="w-64 h-64 text-blue-300"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+          ></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            Our Driving Services
+          </h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Comprehensive driving training programs for all skill levels
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Service Card 1 -->
+          <div
+            class="service-card bg-white rounded-2xl p-8 border border-gray-100 hover-glow fade-in"
+          >
+            <div
+              class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8 text-blue-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">
+              Beginner Training
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              Complete driving course for first-time learners. Our structured
+              curriculum covers all essential driving skills and traffic rules.
+            </p>
+          </div>
+          <!-- Service Card 2 -->
+          <div
+            class="service-card bg-white rounded-2xl p-8 border border-gray-100 hover-glow fade-in"
+          >
+            <div
+              class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8 text-green-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">
+              Advanced Driving
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              Specialized training for defensive driving, highway merging, and
+              complex traffic scenarios.
+            </p>
+          </div>
+          <!-- Service Card 3 -->
+          <div
+            class="service-card bg-white rounded-2xl p-8 border border-gray-100 hover-glow fade-in"
+          >
+            <div
+              class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8 text-purple-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.166 5.477 14.782 5 16.5 5c1.756 0 3.332.477 4.5 1.253v13C19.834 18.477 18.22 18 16.5 18c-1.756 0-3.332.477-4.5 1.253"
+                />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">
+              Refresher Courses
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              Update your skills and knowledge with our intensive refresher
+              programs designed for experienced drivers.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="about" class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            Why Choose DriveSafe?
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Expert instructors, modern facilities, and proven results
+          </p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="space-y-8 fade-in">
+            <div class="flex items-start space-x-4">
+              <div
+                class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 text-blue-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl text-gray-900 mb-2">
+                  Expert Instructors
+                </h3>
+                <p class="text-gray-600">
+                  All certified trainers with 10+ years of professional driving
+                  experience.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div
+                class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 text-green-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl text-gray-900 mb-2">
+                  Modern Fleet
+                </h3>
+                <p class="text-gray-600">
+                  Latest model vehicles with dual controls and advanced safety
+                  features.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div
+                class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 text-purple-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.166 5.477 14.782 5 16.5 5c1.756 0 3.332.477 4.5 1.253v13C19.834 18.477 18.22 18 16.5 18c-1.756 0-3.332.477-4.5 1.253"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl text-gray-900 mb-2">
+                  Flexible Scheduling
+                </h3>
+                <p class="text-gray-600">
+                  Weekend and evening classes available to fit your busy
+                  lifestyle.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rounded-3xl overflow-hidden fade-in"
+            style="animation-delay: 0.2s"
+          >
+            <div class="relative h-96 bg-gray-200">
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-800 flex items-center justify-center"
+              >
+                <div class="text-center text-white px-8">
+                  <div
+                    class="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 transform rotate-12"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-16 w-16 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="text-2xl font-bold">Practice Facility</h3>
+                  <p class="text-blue-100">
+                    Modern training center with multiple practice circuits
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            Student Testimonials
+          </h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            What our students say about their learning experience
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Testimonial 1 -->
+          <div
+            class="testimonial-card bg-gray-50 rounded-2xl p-8 border border-gray-200 fade-in"
+            style="animation-delay: 0.1s"
+          >
+            <div class="flex items-center mb-4">
+              <div
+                class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4"
+              >
+                <span class="font-bold text-blue-600 text-lg">JS</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900">John Smith</h4>
+                <p class="text-sm text-gray-500">New Driver</p>
+              </div>
+            </div>
+            <p class="text-gray-600 mb-4 italic">
+              "The instructors were incredibly patient and knowledgeable. I went
+              from nervous beginner to confident driver in just 8 weeks. Highly
+              recommend!"
+            </p>
+            <div class="flex text-yellow-400">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 text-gray-300"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+            </div>
+          </div>
+          <!-- Testimonial 2 -->
+          <div
+            class="testimonial-card bg-gray-50 rounded-2xl p-8 border border-gray-200 fade-in"
+            style="animation-delay: 0.2s"
+          >
+            <div class="flex items-center mb-4">
+              <div
+                class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4"
+              >
+                <span class="font-bold text-green-600 text-lg">MR</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900">Maria Rodriguez</h4>
+                <p class="text-sm text-gray-500">Returning Driver</p>
+              </div>
+            </div>
+            <p class="text-gray-600 mb-4 italic">
+              "Perfect refresher course before my road test. The instructor
+              helped me overcome my highway anxiety. Now I drive with total
+              confidence!"
+            </p>
+            <div class="flex text-yellow-400">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 text-gray-300"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-20 bg-gray-50">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            Start Your Driving Journey
+          </h2>
+          <p class="text-xl text-gray-600">
+            Sign up for a free consultation and get a personalized learning plan
+          </p>
+        </div>
+        <div
+          class="bg-white rounded-2xl p-8 md:p-12 shadow-lg border border-gray-100"
+        >
+          <form id="contactForm" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label
+                  for="firstName"
+                  class="block text-sm font-medium text-gray-700 mb-2"
+                  >First Name</label
+                >
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  placeholder="John"
+                />
+              </div>
+              <div>
+                <label
+                  for="lastName"
+                  class="block text-sm font-medium text-gray-700 mb-2"
+                  >Last Name</label
+                >
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  placeholder="Doe"
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                for="email"
+                class="block text-sm font-medium text-gray-700 mb-2"
+                >Email Address</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                placeholder="john.doe@example.com"
+              />
+            </div>
+            <div>
+              <label
+                for="phone"
+                class="block text-sm font-medium text-gray-700 mb-2"
+                >Phone Number</label
+              >
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                placeholder="(555) 123-4567"
+              />
+            </div>
+            <div>
+              <label
+                for="experience"
+                class="block text-sm font-medium text-gray-700 mb-2"
+                >Driving Experience</label
+              >
+              <select
+                id="experience"
+                name="experience"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all appearance-cursor"
+              >
+                <option value="">Select your experience level</option>
+                <option value="none">Never driven before</option>
+                <option value="some">Some experience</option>
+                <option value="confident">Confident driver</option>
+              </select>
+            </div>
+            <div>
+              <label
+                for="message"
+                class="block text-sm font-medium text-gray-700 mb-2"
+                >Message</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                placeholder="Tell us about your driving goals..."
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Request Free Consultation
+            </button>
+          </form>
+          <div id="formStatus" class="mt-4 text-center hidden"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WhatsApp CTA -->
+    <a
+      href="https://wa.me/1234567890?text=I%27d%20like%20to%20inquire%20about%20driving%20lessons"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="whatsapp-float"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-8 w-8"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 0C5.373 0 0 5.373 0 12c0 2.121.548 4.148 1.519 5.913L.361 23.245l6.17-1.608c1.695.96 3.578 1.46 5.48 1.46 6.627 0 12-5.373 12-12S18.627 0 12 0zm0 2.212c5.083 0 9.248 4.165 9.248 9.248 0 2.086-.558 4.136-1.615 5.893L.928 19.367l5.206-1.362c1.655.953 3.47 1.462 5.38 1.462 6.627 0 12-5.373 12-12 0-1.472-.238-2.89-.652-4.148h-.001z"
+        />
+        <path
+          d="M12.507 8.506c-.312 0-.617.043-.902.128-1.24.293-2.48.293-3.72 0-.285-.085-.59-.128-.885-.128-.312 0-.617.085-.902.254-.647.245-1.228.65-1.74 1.163-.511.512-.92 1.093-1.165 1.74-.17.285-.254.59-.254.885 0 .312.085.617.254.903.293.748.293 1.498 0 2.237-.17.284-.431.555-.747.778-.312.223-.673.37-1.054.455-.38.085-.785.128-1.205.128-.42 0-.825-.043-1.224-.128-.59-.128-1.093-.38-1.519-.766-.42-.387-.743-.885-.977-1.519-.17-.42-.254-.825-.254-1.205 0-.42.085-.825.254-1.15.17-.312.38-.582.748-.792.367-.21.786-.31 1.241-.31.455 0 .86.1 1.225.293.365.193.651.518.842.944.192.426.288.87.288 1.332zm0-2.51c-.41 0-.81.03-.121.113-.566.08-1.12.24-1.64.465-.52.226-.97.52-1.348.877-.378.358-.704.78-1.008 1.266-.284.46-.52.98-.71 1.54-.19.56-.305 1.15-.34 1.77-.033.62.005 1.245.08 1.87.08.626.25 1.195.46 1.697.224.502.51 1.01.87 1.513.36.502.787.967 1.273 1.39.487.425 1.085.757 1.798.88 1.157.2 2.306.11 3.463-.28.185-.065.34-.135.497-.215.157-.08.31-.162.453-.245.144-.083.287-.165.43-.256.143-.09.286-.18.428-.272.143-.093.286-.185.427-.277.141-.092.282-.184.422-.276.14-.092.282-.184.423-.277.141-.093.282-.185.422-.276.14-.092.282-.184.422-.276s.282-.184.424-.276c.141-.092.282-.184.424-.276.142-.092.284-.184.425-.277.141-.093.284-.185.427-.276.143-.09.286-.182.429-.274.143-.092.284-.184.425-.277.141-.092.282-.182.423-.276.143-.092.284-.184.427-.276.142-.093.284-.185.425-.276.141-.092.284-.184.426-.276.143-.092.284-.185.429-.276.141-.092.284-.182.426-.276.143-.092.284-.182.425-.276.141-.092.284-.184.425-.276.142-.093.286-.183.429-.276.143-.092.286-.185.429-.276.142-.093.284-.185.427-.276.142-.092.284-.184.429-.276.141-.092.284-.184.429-.276.142-.093.286-.185.429-.276.142-.092.284-.184.427-.276.142-.092.284-.182.425-.276.143-.092.284-.184.427-.276.142-.092.284-.184.427-.276.142-.092.284-.182.425-.276.143-.092.286-.183.429-.276.143-.092.286-.185.429-.276.142-.092.284-.184.427-.276.142-.092.284-.182.425-.276.142-.092.284-.184.425-.276.142-.093.286-.183.429-.276.142-.092.284-.184.427-.276.142-.092.284-.182.425-.276.142-.092.284-.184.425-.276.142-.093.286-.183.429-.276.142-.092.284-.184.427-.276.142-.092.284-.182.425-.276.142-.092.284-.184.425-.276.142-.093.286-.183.429-.276.142-.092.284-.184.427-.276.142-.092.284-.182.425-.276.142-.092.284-.184.425-.276.142-.093.286-.183.429-.276.142-.092.284-.184.427-.276.142-.092.284-.182.425-.276.142-.092.284-.184.425-.276z"
+        />
+      </svg>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <div
+                class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"
+              >
+                <span class="text-white font-bold">🚗</span>
+              </div>
+              <span class="font-bold">DriveSafe</span>
+            </div>
+            <p class="text-gray-400 text-sm">
+              Professional driving school dedicated to creating confident, safe
+              drivers.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-3">Quick Links</h3>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="#" class="hover:text-white">Home</a></li>
+              <li><a href="#services" class="hover:text-white">Services</a></li>
+              <li><a href="#about" class="hover:text-white">Why Us</a></li>
+              <li>
+                <a href="#testimonials" class="hover:text-white"
+                  >Testimonials</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-3">Contact Info</h3>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li>📍 123 Driving School Lane</li>
+              <li>📞 (555) 123-4567</li>
+              <li>✉️ info@openschool.local</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-3">Follow Us</h3>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+                >FB</a
+              >
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+                >IG</a
+              >
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+                >TW</a
+              >
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400"
+        >
+          <p>&copy; 2026 DriveSafe Academy. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Form submission handling
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          // Show loading state
+          const submitBtn = e.target.querySelector('button[type="submit"]');
+          const statusDiv = document.getElementById("formStatus");
+          const originalText = submitBtn.textContent;
+
+          submitBtn.textContent = "Sending...";
+          submitBtn.disabled = true;
+          statusDiv.classList.remove("hidden");
+
+          try {
+            // Simulate API call
+            await new Promise((resolve) => setTimeout(resolve, 1500));
+
+            statusDiv.innerHTML = `
+                    <div class="bg-green-50 border border-green-400 text-green-700 px-4 py-3 rounded-lg text-sm">
+                        Thank you! Your consultation request has been sent. We'll contact you soon.
+                    </div>
+                `;
+            statusDiv.classList.remove("hidden");
+            e.target.reset();
+          } catch (error) {
+            statusDiv.innerHTML = `
+                    <div class="bg-red-50 border border-red-400 text-red-700 px-4 py-3 rounded-lg text-sm">
+                        Something went wrong. Please try again later.
+                    </div>
+                `;
+            statusDiv.classList.remove("hidden");
+          } finally {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+          }
+        });
+
+      // Contact button handler
+      document.getElementById("contactBtn")?.addEventListener("click", () => {
+        document
+          .getElementById("contact")
+          ?.scrollIntoView({ behavior: "smooth" });
+      });
+
+      // Smooth scrolling for nav links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              paddingTop: 60,
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
