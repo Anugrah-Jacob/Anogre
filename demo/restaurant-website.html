@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urban Spice | Fine Dining Restaurant</title>
+  <meta name="description" content="Urban Spice - Experience authentic flavors and culinary excellence in the heart of the city.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#0f0f0f',
+            charcoal: '#1a1a1a',
+            stone: '#3d3d3d',
+            pewter: '#6b6b6b',
+            ash: '#9ca3af',
+            cream: '#f5f0e8',
+            sand: '#faf9f7',
+            offwhite: '#fcfcfc',
+            gold: '#c9a959',
+            'gold-dark': '#9e7f3d'
+          },
+          fontFamily: {
+            display: ['Cormorant Garamond', 'serif'],
+            body: ['Outfit', 'sans-serif']
+          },
+          spacing: {
+            '18': '4.5rem',
+            '88': '22rem',
+            '128': '32rem'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; }
+    
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      opacity: 0.5;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="bg-sand text-charcoal">
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone/5">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="#" class="text-2xl font-display font-semibold tracking-wide">
+        URBAN <span class="text-gold">SPICE</span>
+      </a>
+      
+      <div class="hidden md:flex items-center gap-10">
+        <a href="#menu" class="text-sm font-body font-medium text-pewter hover:text-ink transition-colors duration-200">Menu</a>
+        <a href="#about" class="text-sm font-body font-medium text-pewter hover:text-ink transition-colors duration-200">About</a>
+        <a href="#reservations" class="text-sm font-body font-medium text-pewter hover:text-ink transition-colors duration-200">Reservations</a>
+        <a href="#reservations" class="bg-charcoal hover:bg-ink text-white text-sm font-body font-medium px-6 py-2.5 transition-colors duration-200">
+          Book Now
+        </a>
+      </div>
+      
+      <button id="menu-toggle" class="md:hidden p-2 -mr-2" aria-label="Open menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-stone/5">
+      <div class="px-6 py-4 flex flex-col gap-4">
+        <a href="#menu" class="text-base font-body font-medium text-pewter py-2">Menu</a>
+        <a href="#about" class="text-base font-body font-medium text-pewter py-2">About</a>
+        <a href="#reservations" class="text-base font-body font-medium text-pewter py-2">Reservations</a>
+        <a href="#reservations" class="bg-charcoal text-white text-base font-body font-medium px-6 py-3 text-center">Book Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative h-[85vh] min-h-[700px] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-charcoal/50 z-10"></div>
+    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80" 
+         alt="Elegant restaurant setting with tableware" 
+         class="absolute inset-0 w-full h-full object-cover">
+    
+    <div class="relative z-20 text-center px-6">
+      <p class="text-white/70 font-body text-sm tracking-[0.3em] uppercase mb-6">Established 2010</p>
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-medium text-white mb-8 max-w-3xl mx-auto leading-tight">
+        Where Every Dish Tells a Story
+      </h1>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#menu" class="inline-block bg-gold hover:bg-gold-dark text-charcoal font-body font-medium px-8 py-3.5 transition-colors duration-200">
+          Explore Menu
+        </a>
+        <a href="#reservations" class="inline-block border border-white/30 hover:bg-white/10 text-white font-body font-medium px-8 py-3.5 transition-colors duration-200">
+          Reserve a Table
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Preview -->
+  <section id="menu" class="py-24 md:py-32 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-gold font-body text-sm tracking-widest uppercase mb-4">Our Offerings</p>
+        <h2 class="text-4xl md:text-5xl font-display font-medium">Menu Highlights</h2>
+      </div>
+      
+      <!-- Menu Categories -->
+      <div class="flex justify-center gap-1 mb-12 p-1 bg-stone/5">
+        <button class="menu-tab active bg-charcoal text-white font-body text-sm px-8 py-3" data-category="starters">
+          Starters
+        </button>
+        <button class="menu-tab bg-transparent text-pewter font-body text-sm px-8 py-3 hover:text-charcoal transition-colors" data-category="mains">
+          Mains
+        </button>
+        <button class="menu-tab bg-transparent text-pewter font-body text-sm px-8 py-3 hover:text-charcoal transition-colors" data-category="drinks">
+          Beverages
+        </button>
+      </div>
+      
+      <!-- Menu Items -->
+      <div id="menu-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Items rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-24 md:py-32 px-6 bg-cream">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1556910103-1c02745a30bf?w=800&q=80" 
+               alt="Chef preparing dish" 
+               class="w-full h-[600px] object-cover">
+          <div class="absolute -bottom-8 -right-8 bg-white p-8 hidden md:block">
+            <p class="font-display text-5xl font-medium text-gold">15</p>
+            <p class="font-body text-xs text-pewter uppercase tracking-wider">Years</p>
+          </div>
+        </div>
+        
+        <div>
+          <p class="text-gold font-body text-sm tracking-widest uppercase mb-6">Our Beginning</p>
+          <h2 class="text-4xl md:text-5xl font-display font-medium mb-8">A Passion for Flavor</h2>
+          <div class="space-y-6 text-pewter font-body leading-relaxed">
+            <p>
+              Urban Spice was born from a simple belief: exceptional food should be accessible to everyone. 
+              What started as a family kitchen in 2010 has evolved into a destination for those who appreciate 
+              the art of dining.
+            </p>
+            <p>
+              We partner with local farms and artisans to source ingredients that not only taste extraordinary 
+              but support our community. Every plate that leaves our kitchen carries the weight of tradition 
+              and the spark of innovation.
+            </p>
+          </div>
+          
+          <div class="mt-10 pt-10 border-t border-stone/10">
+            <div class="flex items-center gap-5">
+              <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=150&q=80" 
+                   alt="Chef Arjun Mehta" 
+                   class="w-16 h-16 object-cover">
+              <div>
+                <p class="font-display text-xl">Arjun Mehta</p>
+                <p class="text-pewter text-sm">Executive Chef & Owner</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="py-24 md:py-32 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display font-medium">The Urban Spice Standard</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-offwhite p-10 text-center group hover:bg-white transition-colors duration-300">
+          <div class="w-12 h-12 mx-auto mb-6 flex items-center justify-center">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-2xl mb-4">Farm to Table</h3>
+          <p class="text-pewter font-body leading-relaxed">
+            Ingredients sourced within 100 miles when possible. We know our farmers by name.
+          </p>
+        </div>
+        
+        <div class="bg-offwhite p-10 text-center group hover:bg-white transition-colors duration-300">
+          <div class="w-12 h-12 mx-auto mb-6 flex items-center justify-center">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-2xl mb-4">Timely Service</h3>
+          <p class="text-pewter font-body leading-relaxed">
+            Your time is valued. We maintain efficient operations without compromising quality.
+          </p>
+        </div>
+        
+        <div class="bg-offwhite p-10 text-center group hover:bg-white transition-colors duration-300">
+          <div class="w-12 h-12 mx-auto mb-6 flex items-center justify-center">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-2xl mb-4">Consistent Excellence</h3>
+          <p class="text-pewter font-body leading-relaxed">
+            The same quality every visit. That's our promise to you.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="py-24 md:py-32 px-6 bg-charcoal text-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-gold font-body text-sm tracking-widest uppercase mb-4">Testimonials</p>
+        <h2 class="text-4xl md:text-5xl font-display font-medium">What Guests Say</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white/5 p-10">
+          <div class="flex gap-1 mb-6">
+            <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+          </div>
+          <p class="text-white/70 font-body leading-relaxed mb-6">
+            "The flavors here are unmatched. We've been coming for years and it remains consistently excellent. The lamb is a must-try."
+          </p>
+          <p class="font-body font-medium">Michael Torres</p>
+          <p class="text-white/40 text-sm">Manhattan</p>
+        </div>
+        
+        <div class="bg-white/5 p-10">
+          <div class="flex gap-1 mb-6">
+            <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+          </div>
+          <p class="text-white/70 font-body leading-relaxed mb-6">
+            "A hidden gem. The ambiance is intimate without being pretentious. Perfect for celebrations or date nights."
+          </p>
+          <p class="font-body font-medium">Jennifer Liu</p>
+          <p class="text-white/40 text-sm">Brooklyn</p>
+        </div>
+        
+        <div class="bg-white/5 p-10">
+          <div class="flex gap-1 mb-6">
+            <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+          </div>
+          <p class="text-white/70 font-body leading-relaxed mb-6">
+            "Finally, a restaurant that delivers on its promises. Great food, attentive service, beautiful space. Our new favorite."
+          </p>
+          <p class="font-body font-medium">David Park</p>
+          <p class="text-white/40 text-sm">Queens</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservations -->
+  <section id="reservations" class="py-24 md:py-32 px-6">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-gold font-body text-sm tracking-widest uppercase mb-4">Reservations</p>
+        <h2 class="text-4xl md:text-5xl font-display font-medium">Book Your Table</h2>
+        <p class="text-pewter font-body mt-4">Reserve your dining experience. For parties of 6+, please call us directly.</p>
+      </div>
+      
+      <form id="booking-form" class="bg-white p-8 md:p-12">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <label for="name" class="block font-body text-sm font-medium mb-2">Name</label>
+            <input type="text" id="name" name="name" required
+                   class="w-full px-4 py-3 border border-stone/10 font-body focus:outline-none focus:border-gold transition-colors"
+                   placeholder="Your name">
+          </div>
+          
+          <div>
+            <label for="email" class="block font-body text-sm font-medium mb-2">Email</label>
+            <input type="email" id="email" name="email" required
+                   class="w-full px-4 py-3 border border-stone/10 font-body focus:outline-none focus:border-gold transition-colors"
+                   placeholder="your@email.com">
+          </div>
+          
+          <div>
+            <label for="phone" class="block font-body text-sm font-medium mb-2">Phone</label>
+            <input type="tel" id="phone" name="phone" required
+                   class="w-full px-4 py-3 border border-stone/10 font-body focus:outline-none focus:border-gold transition-colors"
+                   placeholder="(555) 123-4567">
+          </div>
+          
+          <div>
+            <label for="date" class="block font-body text-sm font-medium mb-2">Date</label>
+            <input type="date" id="date" name="date" required
+                   class="w-full px-4 py-3 border border-stone/10 font-body focus:outline-none focus:border-gold transition-colors">
+          </div>
+          
+          <div>
+            <label for="time" class="block font-body text-sm font-medium mb-2">Time</label>
+            <select id="time" name="time" required
+                    class="w-full px-4 py-3 border border-stone/10 font-body focus:outline-none focus:border-gold transition-colors bg-white">
+              <option value="">Select time</option>
+              <option value="17:00">5:00 PM</option>
+              <option value="17:30">5:30 PM</option>
+              <option value="18:00">6:00 PM</option>
+              <option value="18:30">6:30 PM</option>
+              <option value="19:00">7:00 PM</option>
+              <option value="19:30">7:30 PM</option>
+              <option value="20:00">8:00 PM</option>
+              <option value="20:30">8:30 PM</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="guests" class="block font-body text-sm font-medium mb-2">Guests</label>
+            <select id="guests" name="guests" required
+                    class="w-full px-4 py-3 border border-stone/10 font-body focus:outline-none focus:border-gold transition-colors bg-white">
+              <option value="">Number of guests</option>
+              <option value="1">1 Guest</option>
+              <option value="2">2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5">5 Guests</option>
+              <option value="6">6 Guests</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="mt-6">
+          <label for="requests" class="block font-body text-sm font-medium mb-2">Special Requests</label>
+          <textarea id="requests" name="requests" rows="3"
+                    class="w-full px-4 py-3 border border-stone/10 font-body focus:outline-none focus:border-gold transition-colors resize-none"
+                    placeholder="Dietary restrictions, allergies, special occasions..."></textarea>
+        </div>
+        
+        <button type="submit" class="w-full bg-charcoal hover:bg-ink text-white font-body font-medium py-4 mt-8 transition-colors">
+          Request Reservation
+        </button>
+        
+        <p id="form-success" class="hidden text-green-600 text-center mt-6 font-body">
+          Reservation requested. We'll confirm within 24 hours.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-charcoal py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-10">
+        <div class="md:col-span-2">
+          <a href="#" class="text-2xl font-display font-semibold text-white">
+            URBAN <span class="text-gold">SPICE</span>
+          </a>
+          <p class="text-white/50 mt-4 font-body max-w-sm">
+            Fine dining in the heart of the city. Where every meal becomes a memory.
+          </p>
+        </div>
+        
+        <div>
+          <h4 class="font-display text-lg text-white mb-4">Location</h4>
+          <div class="text-white/50 font-body space-y-2">
+            <p>42 Culinary Lane</p>
+            <p>New York, NY 10012</p>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="font-display text-lg text-white mb-4">Hours</h4>
+          <div class="text-white/50 font-body space-y-2">
+            <p>Tue - Thu: 5pm - 10pm</p>
+            <p>Fri - Sat: 5pm - 11pm</p>
+            <p>Sun: 4pm - 9pm</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-white/30 text-sm">© 2024 Urban Spice. All rights reserved.</p>
+        <div class="flex gap-6 text-white/40 text-sm">
+          <a href="tel:+15551234567" class="hover:text-white transition-colors">(555) 123-4567</a>
+          <a href="mailto:hello@urbanspice.com" class="hover:text-white transition-colors">hello@urbanspice.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuData = {
+      starters: [
+        { name: "Focaccia", description: "Rosemary, olive oil, sea salt", price: "$12", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80" },
+        { name: "Beef Tartare", description: "Hand-cut beef, capers, quail egg", price: "$22", image: "https://images.unsplash.com/photo-1626200419199-391ae4be7f76?w=400&q=80" },
+        { name: "Burrata", description: "Heirloom tomatoes, aged balsamic", price: "$18", image: "https://images.unsplash.com/photo-1608897013039-887f21d8c804?w=400&q=80" },
+        { name: "Calamari", description: "Lemon aioli, grilled lemon", price: "$16", image: "https://images.unsplash.com/photo-1604909052743-94e838986d24?w=400&q=80" },
+        { name: "Tuna Sashimi", description: "Yellowfin, ponzu, wasabi", price: "$24", image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400&q=80" },
+        { name: "Foie Gras", description: "Candied apple, brioche", price: "$28", image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=400&q=80" }
+      ],
+      mains: [
+        { name: "Dry-Aged Ribeye", description: "45-day aged, bone marrow butter", price: "$58", image: "https://images.unsplash.com/photo-1546833998-877b37c2c5c2?w=400&q=80" },
+        { name: "Branzino", description: "Whole roasted, herb stuffing", price: "$42", image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&q=80" },
+        { name: "Duck Breast", description: "Cherry gastrique, root vegetables", price: "$38", image: "https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?w=400&q=80" },
+        { name: "Wild Mushroom Risotto", description: "Arborio, truffle, parmesan", price: "$28", image: "https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=400&q=80" },
+        { name: "Lobster", description: "Butter poached, drawn butter", price: "$52", image: "https://images.unsplash.com/photo-1553247407-23250d449408?w=400&q=80" },
+        { name: "Wagyu Beef", description: "A5, crispy shallots", price: "$85", image: "https://images.unsplash.com/photo-1558030006-450675393462?w=400&q=80" }
+      ],
+      drinks: [
+        { name: "House Wine", description: "Red or white, by the glass", price: "$14", image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400&q=80" },
+        { name: "Old Fashioned", description: "Bourbon, bitters, orange", price: "$16", image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=400&q=80" },
+        { name: "Espresso", description: "Double, La Marzocco", price: "$5", image: "https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400&q=80" },
+        { name: "Sparkling Water", description: "San Pellegrino, 750ml", price: "$8", image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?w=400&q=80" },
+        { name: "Sake", description: "Junmai daiginjo, chilled", price: "$18", image: "https://images.unsplash.com/photo-1582793993271c13b8a3d67d9?w=400&q=80" },
+        { name: "Negroni", description: "Gin, Campari, sweet vermouth", price: "$15", image: "https://images.unsplash.com/photo-1551751299-1b51cab2694c?w=400&q=80" }
+      ]
+    };
+
+    function renderMenu(category) {
+      const grid = document.getElementById('menu-grid');
+      const items = menuData[category];
+      
+      if (!items) return;
+      
+      grid.innerHTML = items.map(item => `
+        <div class="bg-white border border-stone/5 hover:border-gold/30 transition-colors duration-300">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-baseline mb-2">
+              <h3 class="font-display text-xl">${item.name}</h3>
+              <span class="font-body text-gold font-medium">${item.price}</span>
+            </div>
+            <p class="text-pewter font-body text-sm">${item.description}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Menu tabs
+    document.querySelectorAll('.menu-tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.menu-tab').forEach(t => {
+          t.classList.remove('bg-charcoal', 'text-white');
+          t.classList.add('bg-transparent', 'text-pewter');
+        });
+        this.classList.remove('bg-transparent', 'text-pewter');
+        this.classList.add('bg-charcoal', 'text-white');
+        renderMenu(this.dataset.category);
+      });
+    });
+
+    renderMenu('starters');
+
+    // Mobile menu
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.add('hidden');
+      });
+    });
+
+    // Form
+    document.getElementById('booking-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+      const guests = document.getElementById('guests').value;
+
+      if (name && email && phone && date && time && guests) {
+        document.getElementById('form-success').classList.remove('hidden');
+        this.reset();
+        setTimeout(() => {
+          document.getElementById('form-success').classList.add('hidden');
+        }, 4000);
+      }
+    });
+
+    // Set min date
+    document.getElementById('date').min = new Date().toISOString().split('T')[0];
+  </script>
+</body>
+</html>

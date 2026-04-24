@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LifeCare Clinic - Quality Healthcare You Can Trust</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: { DEFAULT: "#0D6EFD", hover: "#0B5ED7", light: "#E8F0FE" },
+              secondary: { DEFAULT: "#198754", hover: "#157347", light: "#E8F5E9" },
+              surface: "#FFFFFF",
+              background: "#F8F9FA",
+              text: { primary: "#212529", secondary: "#6C757D", tertiary: "#ADB5BD" },
+              success: "#198754", error: "#DC3545", warning: "#FFC107", border: "#DEE2E6"
+            },
+            fontFamily: { sans: ["Inter", "system-ui", "sans-serif"] },
+            borderRadius: { sm: "4px", md: "8px", lg: "12px" }
+          }
+        }
+      };
+    </script>
+    <style>
+      body { font-family: "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+      @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: translateX(0); } }
+      @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+      @keyframes skeleton-loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+      .skeleton { background: linear-gradient(90deg, #f5f5f5 25%, #e5e5e5 50%, #f5f5f5 75%); background-size: 200% 100%; animation: skeleton-loading 1.5s infinite; }
+      .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+      .card-hover:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+      .nav-link { position: relative; }
+      .nav-link:after { content: ""; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #0D6EFD; transition: width 0.2s ease; }
+      .nav-link:hover:after { width: 100%; }
+      .input-error { border-color: #DC3545 !important; }
+      .section-spacing { padding-top: 56px; padding-bottom: 56px; }
+      @media (min-width: 768px) { .section-spacing { padding-top: 80px; padding-bottom: 80px; } }
+      .animate-on-scroll { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+      .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+      .float-icon { animation: float 4s ease-in-out infinite; }
+      .counter { font-variant-numeric: tabular-nums; }
+      .image-placeholder {
+        width: 100%;
+        background: linear-gradient(135deg, #f8f9fa 25%, #e9ecef 25% 50%, #f8f9fa 50% 75%, #e9ecef 75%);
+        background-size: 20px 20px;
+        border: 1px solid #dee2e6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #6c757d;
+        font-size: 0.9rem;
+        font-weight: 500;
+        border-radius: 12px;
+      }
+      .image-placeholder-wide { height: 260px; }
+      .image-placeholder-square { height: 180px; }
+      .image-placeholder-avatar { width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0; }
+      .glass-overlay {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255,255,255, 0.2);
+      }
+      @keyframes pulse-ring { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+      .pulse-ring::before {
+        content: "";
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        border: 2px solid currentColor;
+        animation: pulse-ring 1.5s ease-out infinite;
+      }
+      
+      /* Service card hover */
+      .service-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+      .service-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.12); }
+      
+      /* Team member hover */
+      .team-member { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+      .team-member:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+      
+      /* Button micro-interaction */
+      .btn-hover { transition: transform 0.2s ease; }
+      .btn-hover:hover { transform: translateY(-2px); }
+      
+      /* Doctor card animations */
+      @keyframes doctorSlideInLeft {
+        from { opacity: 0; transform: translateX(-60px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+      @keyframes doctorSlideInRight {
+        from { opacity: 0; transform: translateX(60px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+      @keyframes doctorFadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes doctorFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+      @keyframes doctorFloatRight {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(15px); }
+      }
+      @keyframes floatLeftRight {
+        0% { transform: translateX(0); }
+        50% { transform: translateX(20px); }
+        100% { transform: translateX(0); }
+      }
+      @keyframes floatRightLeft {
+        0% { transform: translateX(0); }
+        50% { transform: translateX(-20px); }
+        100% { transform: translateX(0); }
+      }
+      .doctor-card-anim { animation: doctorFadeUp 0.6s ease forwards; opacity: 0; }
+      .doctor-card-anim.delay-1 { animation-delay: 0.1s; }
+      .doctor-card-anim.delay-2 { animation-delay: 0.2s; }
+      .doctor-card-anim.delay-3 { animation-delay: 0.3s; }
+      .doctor-float { animation: doctorFloat 3s ease-in-out infinite; }
+      .doctor-float-left { animation: doctorFloatRight 4s ease-in-out infinite; }
+      .doctor-slide-left { animation: doctorSlideInLeft 0.8s ease forwards; opacity: 0; }
+      .doctor-slide-right { animation: doctorSlideInRight 0.8s ease forwards; opacity: 0; }
+      
+      /* Doctor image box */
+      .doctor-box {
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .doctor-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      }
+      .doctor-box-img {
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+      }
+      .doctor-box-img::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .doctor-box:hover .doctor-box-img::after { opacity: 1; }
+      
+      /* Navbar scroll effect */
+      .navbar-scrolled { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+      
+      /* Smooth scrolling */
+      html { scroll-behavior: smooth; }
+      
+      /* Accessibility - reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+        html { scroll-behavior: auto; }
+      }
+    </style>
+</head>
+<body class="bg-[#F8F9FA] text-[#212529]">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-[#0D6EFD] focus:text-white focus:px-4 focus:py-2 focus:rounded">Skip to main content</a>
+
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-white border-b border-[#DEE2E6]">
+        <nav class="max-w-7xl mx-auto px-4 md:px-8" aria-label="Main navigation">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <a href="/" class="flex items-center gap-2">
+                    <svg class="w-8 h-8 text-[#0D6EFD]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    <span class="text-xl md:text-2xl font-bold text-[#0D6EFD]">LifeCare Clinic</span>
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#services" class="nav-link text-[#6C757D] hover:text-[#212529] transition-colors">Services</a>
+                    <a href="#doctors" class="nav-link text-[#6C757D] hover:text-[#212529] transition-colors">Doctors</a>
+                    <a href="#why-us" class="nav-link text-[#6C757D] hover:text-[#212529] transition-colors">Why Us</a>
+                    <a href="#appointment" class="nav-link text-[#6C757D] hover:text-[#212529] transition-colors">Appointment</a>
+                    <a href="#testimonials" class="nav-link text-[#6C757D] hover:text-[#212529] transition-colors">Testimonials</a>
+                    <a href="#contact" class="nav-link text-[#6C757D] hover:text-[#212529] transition-colors">Contact</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="#appointment" class="hidden md:inline-flex px-5 py-2.5 bg-[#0D6EFD] text-white font-semibold rounded-md hover:bg-[#0B5ED7] transition-colors">Book Appointment</a>
+                    <button id="mobile-menu-toggle" class="p-2 rounded-md hover:bg-[#F8F9FA] transition-colors md:hidden" aria-label="Toggle menu" aria-expanded="false">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-[#DEE2E6] bg-white">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#services" class="block py-2 text-[#6C757D] hover:text-[#212529]">Services</a>
+                <a href="#doctors" class="block py-2 text-[#6C757D] hover:text-[#212529]">Doctors</a>
+                <a href="#why-us" class="block py-2 text-[#6C757D] hover:text-[#212529]">Why Us</a>
+                <a href="#appointment" class="block py-2 text-[#6C757D] hover:text-[#212529]">Appointment</a>
+                <a href="#testimonials" class="block py-2 text-[#6C757D] hover:text-[#212529]">Testimonials</a>
+                <a href="#contact" class="block py-2 text-[#6C757D] hover:text-[#212529]">Contact</a>
+                <a href="#appointment" class="block py-2 px-4 bg-[#0D6EFD] text-white rounded-md text-center font-semibold mt-4">Book Appointment</a>
+            </div>
+        </div>
+    </header>
+    <main id="main">
+        <!-- Hero Section -->
+        <section class="relative bg-white overflow-hidden">
+            <!-- Floating decorative icons -->
+            <div class="float-icon absolute top-20 left-8 text-[#0D6EFD] opacity-20 hidden md:block" style="width: 48px; height: 48px;">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </div>
+            
+            <!-- Animated Doctor Box - Floating -->
+            <div class="doctor-float doctor-slide-right absolute top-28 right-12 hidden lg:block z-10" style="right: 5%;">
+                <div class="doctor-box bg-white rounded-2xl p-4 shadow-xl" style="width: 180px;">
+                    <div class="doctor-box-img mb-3">
+                        <div class="image-placeholder" style="height: 120px; border-radius: 12px;">
+                            <svg class="w-10 h-10 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="font-semibold text-sm">Dr. Sarah Johnson</h3>
+                        <p class="text-xs text-[#0D6EFD]">Chief Dentist</p>
+                    </div>
+                </div>
+            </div>
+            <div class="float-icon absolute top-32 right-8 text-[#198754] opacity-20 hidden lg:block" style="width: 64px; height: 64px; animation-delay: 1s;">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            </div>
+            <div class="float-icon absolute bottom-20 left-1/4 text-[#0D6EFD] opacity-20 hidden md:block" style="width: 40px; height: 40px; animation-delay: 2s;">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+<div class="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24 lg:py-32">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="max-w-xl glass-overlay rounded-xl p-6 md:p-8">
+                        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">Quality Care You Can Trust</h1>
+                        <p class="text-lg md:text-xl text-[#6C757D] mb-6 leading-relaxed">Professional healthcare services for you and your family. We provide compassionate care with modern medical expertise.</p>
+                        <div class="flex flex-wrap gap-4 mb-6">
+                            <a href="#appointment" class="btn-hover px-6 py-3 bg-[#0D6EFD] text-white font-semibold rounded-md hover:bg-[#0B5ED7] transition-colors">Book Appointment</a>
+                            <a href="#services" class="btn-hover px-6 py-3 border-2 border-[#0D6EFD] text-[#0D6EFD] font-semibold rounded-md hover:bg-[#E8F0FE] transition-colors">View Services</a>
+                        </div>
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                            <div class="flex items-center gap-2 bg-[rgba(255,255, 255, 0.2)] rounded-full px-4 py-2">
+                                <svg class="w-5 h-5 text-[#FFC107]" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.561-.955L10 0l2.95 5.955 6.561.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <span class="font-semibold">4.8</span>
+                                <span class="text-sm opacity-80">Google Rating</span>
+                            </div>
+                            <span class="hidden sm:block w-px h-8 bg-white/30"></span>
+                            <div class="flex items-center gap-2 bg-[rgba(255, 255, 255, 0.2)] rounded-full px-4 py-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-6a5 5 0 00-10 0v5.5M5 20h14M12 13a5 5 0 100 6M12 13a5 5 0 110 6"/></svg>
+                                <span class="font-semibold">13+</span>
+                                <span class="text-sm opacity-80">Years Trusted Care</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="image-placeholder image-placeholder-wide" style="min-height: 400px;">
+                            <div class="text-center">
+                                <svg class="w-16 h-16 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                                <p class="font-medium">Hero Image Placeholder</p>
+                                <p class="text-sm opacity-75">Add clinic photo here</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Animated elements below hero image -->
+                    <div class="hidden md:flex justify-between items-center mt-8">
+                        <div class="bg-white p-4 rounded-xl shadow-lg" style="animation: floatLeftRight 4s ease-in-out infinite;">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 bg-[#E8F0FE] rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-[#0D6EFD]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.959 11.959 0 0112 2.944a11.959 11.959 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-sm">ISO Certified</p>
+                                    <p class="text-xs text-[#6C757D]">Global Standards</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl shadow-lg" style="animation: floatLeftRight 4s ease-in-out infinite; animation-delay: 2s;">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 bg-[#E8F5E9] rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-[#198754]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-sm">10K+ Patients</p>
+                                    <p class="text-xs text-[#6C757D]">Satisfied Care</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Doctor info with animation - continuous -->
+                    <div class="hidden md:flex justify-center mt-6">
+                        <div class="bg-white p-4 rounded-xl shadow-lg" style="animation: floatLeftRight 3s ease-in-out infinite; animation-delay: 0.5s;">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 bg-[#0D6EFD] rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-sm text-[#0D6EFD]">Dr. Sarah Johnson</p>
+                                    <p class="text-xs text-[#6C757D]">Chief Dentist</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Placeholders Section -->
+        <section class="py-12 bg-white">
+            <div class="max-w-7xl mx-auto px-4 md:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="image-placeholder image-placeholder-square animate-on-scroll">Clinic Interior</div>
+                    <div class="image-placeholder image-placeholder-square animate-on-scroll">Modern Equipment</div>
+                    <div class="image-placeholder image-placeholder-square animate-on-scroll">Comfortable Facilities</div>
+                    <div class="image-placeholder image-placeholder-square animate-on-scroll">Expert Team</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section-spacing bg-[#F8F9FA]">
+            <div class="max-w-7xl mx-auto px-4 md:px-8">
+                <div class="text-center mb-10 md:mb-12">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Our Services</h2>
+                    <p class="text-[#6C757D] max-w-2xl mx-auto">Comprehensive healthcare services designed to meet your family's medical needs.</p>
+                </div>
+                <div id="services-loading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-lg p-6 skeleton h-48"></div>
+                    <div class="bg-white rounded-lg p-6 skeleton h-48"></div>
+                    <div class="bg-white rounded-lg p-6 skeleton h-48"></div>
+                    <div class="bg-white rounded-lg p-6 skeleton h-48"></div>
+                </div>
+<div id="services-grid" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <article class="service-card bg-white rounded-lg p-6 border border-[#DEE2E6]">
+                        <svg class="w-10 h-10 text-[#0D6EFD] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <h3 class="text-lg font-semibold mb-2">General Checkup</h3>
+                        <p class="text-[#6C757D] text-sm">Routine health examinations to monitor and maintain your well-being.</p>
+                    </article>
+                    <article class="service-card bg-white rounded-lg p-6 border border-[#DEE2E6]">
+                        <svg class="w-10 h-10 text-[#0D6EFD] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a4 4 0 00-1.162-5.904M6.343 7.757a4 4 0 015.656 0m-1.757 10.586a4 4 0 01-5.656 0m1.757-10.586a4 4 0 015.656 0M6.343 7.757a4 4 0 015.656 0m-1.757 10.586a4 4 0 01-5.656 0"/></svg>
+                        <h3 class="text-lg font-semibold mb-2">Diagnostics</h3>
+                        <p class="text-[#6C757D] text-sm">Advanced diagnostic services with state-of-the-art medical equipment.</p>
+                    </article>
+                    <article class="service-card bg-white rounded-lg p-6 border border-[#DEE2E6]">
+                        <svg class="w-10 h-10 text-[#0D6EFD] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        <h3 class="text-lg font-semibold mb-2">Emergency Care</h3>
+                        <p class="text-[#6C757D] text-sm">24/7 emergency medical services with rapid response and expert care.</p>
+                    </article>
+                    <article class="service-card bg-white rounded-lg p-6 border border-[#DEE2E6]">
+                        <svg class="w-10 h-10 text-[#0D6EFD] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                        <h3 class="text-lg font-semibold mb-2">Specialist Consultation</h3>
+                        <p class="text-[#6C757D] text-sm">Expert consultations with specialists across various medical fields.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+<!-- Doctors Section -->
+        <section id="doctors" class="section-spacing bg-white">
+            <div class="max-w-7xl mx-auto px-4 md:px-8">
+                <div class="text-center mb-10 md:mb-12">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 animate-on-scroll">Our Doctors</h2>
+                    <p class="text-[#6C757D] max-w-2xl mx-auto animate-on-scroll">Meet our team of experienced medical professionals dedicated to your health.</p>
+                </div>
+                <div id="doctors-loading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-[#F8F9FA] rounded-lg p-6 skeleton h-64"></div>
+                    <div class="bg-[#F8F9FA] rounded-lg p-6 skeleton h-64"></div>
+                    <div class="bg-[#F8F9FA] rounded-lg p-6 skeleton h-64"></div>
+                </div>
+                <div id="doctors-grid" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-on-scroll">
+                    <article class="team-member bg-[#F8F9FA] rounded-lg p-6 border border-[#DEE2E6] text-center doctor-card-anim delay-1">
+                        <div class="image-placeholder image-placeholder-avatar mx-auto mb-4">Dr SJ</div>
+                        <h3 class="text-lg font-semibold">Dr. Sarah Johnson</h3>
+                        <p class="text-[#0D6EFD] font-medium text-sm mb-1">Cardiologist</p>
+                        <p class="text-[#ADB5BD] text-sm">15+ years experience</p>
+                    </article>
+                    <article class="team-member bg-[#F8F9FA] rounded-lg p-6 border border-[#DEE2E6] text-center doctor-card-anim delay-2">
+                        <div class="image-placeholder image-placeholder-avatar mx-auto mb-4">Dr MC</div>
+                        <h3 class="text-lg font-semibold">Dr. Michael Chen</h3>
+                        <p class="text-[#0D6EFD] font-medium text-sm mb-1">Pediatrician</p>
+                        <p class="text-[#ADB5BD] text-sm">12+ years experience</p>
+                    </article>
+                    <article class="team-member bg-[#F8F9FA] rounded-lg p-6 border border-[#DEE2E6] text-center doctor-card-anim delay-3">
+                        <div class="image-placeholder image-placeholder-avatar mx-auto mb-4">Dr ER</div>
+                        <h3 class="text-lg font-semibold">Dr. Emily Rodriguez</h3>
+                        <p class="text-[#0D6EFD] font-medium text-sm mb-1">Dermatologist</p>
+                        <p class="text-[#ADB5BD] text-sm">10+ years experience</p>
+                    </article>
+                </div>
+<div id="doctors-empty" class="hidden text-center py-12">
+                    <svg class="w-16 h-16 mx-auto text-[#ADB5BD] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                    <p class="text-[#6C757D]">No doctors available at the moment.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chief Doctor Spotlight -->
+        <section class="section-spacing bg-[#F8F9FA]">
+            <div class="max-w-7xl mx-auto px-4 md:px-8">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="text-center doctor-slide-left">
+                        <div class="image-placeholder image-placeholder-square rounded-full mx-auto mb-6" style="width: 240px; height: 240px; border-radius: 50%;">
+                            <div class="flex items-center justify-center h-full">
+                                <span class="text-lg font-semibold">Dr. Sarah Johnson</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="doctor-slide-right">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-4">Meet Our Chief Physician</h2>
+                        <p class="text-[#6C757D] mb-4 leading-relaxed">Dr. Sarah Johnson brings over 20 years of clinical experience and leadership to LifeCare Clinic. Her patient-first approach and commitment to continuing education ensure every treatment is delivered with precision, compassion, and modern clinical standards.</p>
+                        <p class="text-[#6C757D] mb-6 leading-relaxed">As the driving force behind our culture, she ensures that every visit feels confident, clear, and caring — setting the tone for the premium experience our patients trust.</p>
+                        <a href="#appointment" class="btn-hover inline-flex px-6 py-3 bg-[#0D6EFD] text-white font-semibold rounded-md hover:bg-[#0B5ED7] transition-colors">Meet the Full Team</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="section-spacing bg-white">
+            <div class="max-w-7xl mx-auto px-4 md:px-8">
+                <div class="text-center mb-10 md:mb-12">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">How the Process Works</h2>
+                    <p class="text-[#6C757D] max-w-2xl mx-auto">Simple 3-step process to get the care you need.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center p-6">
+                        <div class="w-16 h-16 bg-[#0D6EFD] text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
+                        <h3 class="text-lg font-semibold mb-2">Consultation & Diagnosis</h3>
+                        <p class="text-[#6C757D] text-sm">Visit any branch or book online. We assess your health needs using advanced diagnostic tools.</p>
+                    </div>
+                    <div class="text-center p-6">
+                        <div class="w-16 h-16 bg-[#198754] text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
+                        <h3 class="text-lg font-semibold mb-2">Personalized Treatment Plan</h3>
+                        <p class="text-[#6C757D] text-sm">We create a customized care plan tailored to your specific needs and health goals.</p>
+                    </div>
+                    <div class="text-center p-6">
+                        <div class="w-16 h-16 bg-[#17A2B8] text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
+                        <h3 class="text-lg font-semibold mb-2">Treatment & Follow-up Care</h3>
+                        <p class="text-[#6C757D] text-sm">Receive expert treatment with ongoing support and follow-up care.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Premium Design Section -->
+        <section class="section-spacing bg-[#F8F9FA]">
+            <div class="max-w-7xl mx-auto px-4 md:px-8">
+                <div class="text-center mb-10 md:mb-12">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Why LifeCare Clinic Feels Premium</h2>
+                    <p class="text-[#6C757D] max-w-2xl mx-auto">We design every page using psychology-backed principles so your first impression feels confident, your experience feels effortless, and every detail feels intentionally crafted.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-lg p-6 border border-[#DEE2E6]">
+                        <h3 class="text-lg font-bold mb-2">1. Halo Effect</h3>
+                        <p class="text-[#6C757D] text-sm">We engineer the first 50ms so your initial impression instantly feels professional and trustworthy.</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 border border-[#DEE2E6]">
+                        <h3 class="text-lg font-bold mb-2">2. Cognitive Clarity</h3>
+                        <p class="text-[#6C757D] text-sm">We reduce cognitive load with clear hierarchy, generous whitespace, and predictable navigation.</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 border border-[#DEE2E6]">
+                        <h3 class="text-lg font-bold mb-2">3. Micro Interactions</h3>
+                        <p class="text-[#6C757D] text-sm">Thoughtful small details and animations create moments of delight and help the experience feel refined.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section id="why-us" class="section-spacing bg-[#F8F9FA]">
+            <div class="max-w-7xl mx-auto px-4 md:px-8">
+                <div class="text-center mb-10 md:mb-12">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Why Choose Us</h2>
+                    <p class="text-[#6C757D] max-w-2xl mx-auto">We combine medical expertise with compassionate care to deliver the best healthcare experience.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="text-center p-6">
+                        <svg class="w-12 h-12 text-[#0D6EFD] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        <h3 class="text-lg font-semibold mb-2">Experienced Doctors</h3>
+                        <p class="text-[#6C757D] text-sm">Our team brings decades of combined medical experience across specialties.</p>
+                    </div>
+                    <div class="text-center p-6">
+                        <svg class="w-12 h-12 text-[#0D6EFD] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+                        <h3 class="text-lg font-semibold mb-2">Modern Equipment</h3>
+                        <p class="text-[#6C757D] text-sm">State-of-the-art medical technology for accurate diagnostics and treatment.</p>
+                    </div>
+                    <div class="text-center p-6">
+                        <svg class="w-12 h-12 text-[#0D6EFD] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <h3 class="text-lg font-semibold mb-2">24/7 Support</h3>
+                        <p class="text-[#6C757D] text-sm">Round-the-clock medical support and emergency services when you need them.</p>
+                    </div>
+                    <div class="text-center p-6">
+                        <svg class="w-12 h-12 text-[#0D6EFD] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                        <h3 class="text-lg font-semibold mb-2">Patient-Centered Care</h3>
+                        <p class="text-[#6C757D] text-sm">Personalized treatment plans focused on your unique health needs.</p>
+                    </div>
+        </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-16 bg-[#0D6EFD] text-white">
+            <div class="max-w-7xl mx-auto px-4 md:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="animate-on-scroll">
+                        <div class="text-4xl md:text-5xl font-bold counter" data-target="15">0</div>
+                        <div class="text-sm md:text-base mt-2">Doctors</div>
+                    </div>
+                    <div class="animate-on-scroll">
+                        <div class="text-4xl md:text-5xl font-bold counter" data-target="24">0</div>
+                        <div class="text-sm md:text-base mt-2">/7 Support</div>
+                    </div>
+                    <div class="animate-on-scroll">
+                        <div class="text-4xl md:text-5xl font-bold counter" data-target="10000">0</div>
+                        <div class="text-sm md:text-base mt-2">+ Patients Served</div>
+                    </div>
+                    <div class="animate-on-scroll">
+                        <div class="text-4xl md:text-5xl font-bold counter" data-target="13">0</div>
+                        <div class="text-sm md:text-base mt-2">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Appointment Section -->
+        <section id="appointment" class="section-spacing bg-white">
+            <div class="max-w-7xl mx-auto px-4 md:px-8">
+                <div class="text-center mb-10 md:mb-12">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Book an Appointment</h2>
+                    <p class="text-[#6C757D] max-w-2xl mx-auto">Schedule your visit with our simple online booking form.</p>
+                </div>
+                <form id="appointment-form" class="max-w-lg mx-auto space-y-6" novalidate>
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-[#212529] mb-2">Full Name</label>
+                        <input type="text" id="name" name="name" required class="w-full h-12 px-4 border border-[#DEE2E6] rounded-md bg-[#F8F9FA] text-[#212529] focus:outline-none focus:border-[#0D6EFD]" placeholder="John Doe" />
+                        <p class="error-message hidden text-[#DC3545] text-sm mt-1" id="name-error">Please enter your full name</p>
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-[#212529] mb-2">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required class="w-full h-12 px-4 border border-[#DEE2E6] rounded-md bg-[#F8F9FA] text-[#212529] focus:outline-none focus:border-[#0D6EFD]" placeholder="+1 (555) 000-0000" />
+                        <p class="error-message hidden text-[#DC3545] text-sm mt-1" id="phone-error">Please enter a valid phone number</p>
+                    </div>
+                    <div>
+                        <label for="date" class="block text-sm font-medium text-[#212529] mb-2">Preferred Date</label>
+                        <input type="date" id="date" name="date" required class="w-full h-12 px-4 border border-[#DEE2E6] rounded-md bg-[#F8F9FA] text-[#212529] focus:outline-none focus:border-[#0D6EFD]" />
+                        <p class="error-message hidden text-[#DC3545] text-sm mt-1" id="date-error">Please select a date</p>
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-[#0D6EFD] text-white font-semibold rounded-md hover:bg-[#0B5ED7] transition-colors">Book Appointment</button>
+                    <p id="form-success" class="hidden text-[#198754] text-center font-medium">Appointment booked successfully!</p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="section-spacing bg-[#F8F9FA]">
+            <div class="max-w-7xl mx-auto px-4 md:px-8">
+                <div class="text-center mb-10 md:mb-12">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Patient Reviews</h2>
+                    <p class="text-[#6C757D] max-w-2xl mx-auto">Read what our patients say about their experience at LifeCare Clinic.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <article class="bg-white rounded-lg p-6 border border-[#DEE2E6]">
+                        <div class="flex gap-0.5 text-[#FFC107] mb-3">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.561-.955L10 0l2.95 5.955 6.561.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.561-.955L10 0l2.95 5.955 6.561.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.561-.955L10 0l2.95 5.955 6.561.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.561-.955L10 0l2.95 5.955 6.561.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.561-.955L10 0l2.95 5.955 6.561.955-4.756 4.635 1.123 6.545z"/></svg>
+                        </div>
+                        <p class="text-[#6C757D] mb-4">"Excellent care from start to finish. Dr. Johnson took time to listen and explain everything clearly."</p>
+                        <p class="font-semibold text-sm">- Maria S.</p>
+                    </article>
+                    <article class="bg-white rounded-lg p-6 border border-[#DEE2E6]">
+                        <div class="flex gap-0.5 text-[#FFC107] mb-3">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.561-.955L10 0l2.95 5.955 6.561.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.561-.955L10 0l2.95 5.955 6.561.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.561-.955L10 0l2.95 5.955 6.561.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.561-.955L10 0l2.95 5.955 6.561.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.561-.955L10 0l2.95 5.955 6.561.955-4.756 4.635 1.123 6.545z"/></svg>
+                        </div>
+                        <p class="text-[#6C757D] mb-4">"The booking process was seamless, and the staff was incredibly professional."</p>
+                        <p class="font-semibold text-sm">- James R.</p>
+                    </article>
+                    <article class="bg-white rounded-lg p-6 border border-[#DEE2E6]">
+                        <div class="flex gap-0.5 text-[#FFC107] mb-3">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.561-.955L10 0l2.95 5.955 6.561.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.561-.955L10 0l2.95 5.955 6.561.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.561-.955L10 0l2.95 5.955 6.561.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.561-.955L10 0l2.95 5.955 6.561.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.561-.955L10 0l2.95 5.955 6.561.955-4.756 4.635 1.123 6.545z"/></svg>
+                        </div>
+                        <p class="text-[#6C757D] mb-4">"Dr. Chen is amazing with kids. My children look forward to their checkups!"</p>
+                        <p class="font-semibold text-sm">- Priya K.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-spacing bg-white">
+            <div class="max-w-7xl mx-auto px-4 md:px-8">
+                <div class="text-center mb-10 md:mb-12">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Contact Us</h2>
+                    <p class="text-[#6C757D] max-w-2xl mx-auto">Get in touch with us for appointments, inquiries, or directions to our clinic.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="font-semibold mb-2">Address</h3>
+                            <p class="text-[#6C757D]">123 Health Street, Medical District<br/>New York, NY 10001</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-2">Phone</h3>
+                            <p class="text-[#6C757D]">(555) 123-4567</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-2">Email</h3>
+                            <p class="text-[#6C757D]">info@lifecareclinic.com</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-2">Hours</h3>
+                            <p class="text-[#6C757D]">Mon-Fri: 8:00 AM - 8:00 PM<br/>Sat-Sun: 9:00 AM - 5:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="bg-[#F8F9FA] rounded-lg border border-[#DEE2E6] flex items-center justify-center min-h-[300px]">
+                        <div class="text-center p-8">
+                            <svg class="w-12 h-12 text-[#ADB5BD] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            <p class="text-[#ADB5BD]">Map placeholder</p>
+                            <p class="text-[#ADB5BD] text-sm mt-1">Google Maps integration</p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </section>
+
+        <!-- Floating Call Button -->
+        <a href="tel:+15551234567" class="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-5 py-3 bg-[#198754] text-white font-semibold rounded-full shadow-lg hover:bg-[#157347] transition-colors animate-pulse">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.258 3.465a1 1 0 01-.576 1.258l-2.39 1.12a11.042 11.042 0 005.516 5.516l1.12-2.39a1 1 0 011.258-.576l3.465 1.258a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.39 21 2 13.61 2 5V4a2 2 0 012-2h1z"/></svg>
+            <span class="hidden sm:inline">Call Now</span>
+        </a>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-[#F8F9FA] border-t border-[#DEE2E6] py-12">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="font-bold mb-4">LifeCare Clinic</h3>
+                    <p class="text-[#6C757D] text-sm">Quality healthcare services for you and your family since 2010.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-[#6C757D] text-sm">
+                        <li><a href="#services" class="hover:text-[#212529] transition-colors">Services</a></li>
+                        <li><a href="#doctors" class="hover:text-[#212529] transition-colors">Doctors</a></li>
+                        <li><a href="#appointment" class="hover:text-[#212529] transition-colors">Book Appointment</a></li>
+                        <li><a href="#testimonials" class="hover:text-[#212529] transition-colors">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2 text-[#6C757D] text-sm">
+                        <li><a href="#" class="hover:text-[#212529] transition-colors">General Checkup</a></li>
+                        <li><a href="#" class="hover:text-[#212529] transition-colors">Diagnostics</a></li>
+                        <li><a href="#" class="hover:text-[#212529] transition-colors">Emergency Care</a></li>
+                        <li><a href="#" class="hover:text-[#212529] transition-colors">Specialist Consultation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-[#6C757D] text-sm">
+                        <li>(555) 123-4567</li>
+                        <li>info@lifecareclinic.com</li>
+                        <li>123 Health Street, NY 10001</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-[#DEE2E6] pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[#ADB5BD] text-sm">
+                <p>&copy; 2026 LifeCare Clinic. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-[#212529] transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-[#212529] transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        var mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+        var mobileMenu = document.getElementById("mobile-menu");
+        mobileMenuToggle.addEventListener("click", function() {
+            var isExpanded = mobileMenuToggle.getAttribute("aria-expanded") === "true";
+            mobileMenuToggle.setAttribute("aria-expanded", !isExpanded);
+            mobileMenu.classList.toggle("hidden");
+        });
+
+        // Simulate Loading
+        setTimeout(function() {
+            document.getElementById("services-loading").classList.add("hidden");
+            document.getElementById("services-grid").classList.remove("hidden");
+            document.getElementById("doctors-loading").classList.add("hidden");
+            document.getElementById("doctors-grid").classList.remove("hidden");
+        }, 1500);
+
+        // Scroll-triggered Animations (Intersection Observer)
+        var animatedElements = document.querySelectorAll(".animate-on-scroll");
+        if ("IntersectionObserver" in window) {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            animatedElements.forEach(function(el) { observer.observe(el); });
+        } else {
+            // Fallback: show all elements immediately
+            animatedElements.forEach(function(el) { el.classList.add("visible"); });
+        }
+
+        // Counter Animation
+        function animateCounter(el) {
+            var target = parseInt(el.getAttribute("data-target"));
+            var duration = 2000;
+            var start = 0;
+            var startTime = null;
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                var progress = Math.min((timestamp - startTime) / duration, 1);
+                var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+                el.textContent = Math.floor(eased * target).toLocaleString();
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    el.textContent = target.toLocaleString();
+                }
+            }
+            requestAnimationFrame(step);
+        }
+
+        // Observe counter elements
+        var counters = document.querySelectorAll(".counter");
+        if ("IntersectionObserver" in window) {
+            var counterObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            counters.forEach(function(el) { counterObserver.observe(el); });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener("click", function(e) {
+                var targetId = this.getAttribute("href");
+                if (targetId && targetId !== "#") {
+                    e.preventDefault();
+                    var targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }
+                }
+            });
+        });
+
+        // Service card hover effects
+        document.querySelectorAll(".service-card").forEach(function(card) {
+            card.addEventListener("mouseenter", function() {
+                this.style.transform = "translateY(-8px)";
+            });
+            card.addEventListener("mouseleave", function() {
+                this.style.transform = "translateY(0)";
+            });
+        });
+
+        // Team member hover effects
+        document.querySelectorAll(".team-member").forEach(function(member) {
+            member.addEventListener("mouseenter", function() {
+                this.style.transform = "translateY(-5px)";
+            });
+            member.addEventListener("mouseleave", function() {
+                this.style.transform = "translateY(0)";
+            });
+        });
+
+        // Button hover effects
+        document.querySelectorAll(".btn-hover").forEach(function(btn) {
+            btn.addEventListener("mouseenter", function() {
+                this.style.transform = "translateY(-2px)";
+            });
+            btn.addEventListener("mouseleave", function() {
+                this.style.transform = "translateY(0)";
+            });
+        });
+
+        // Navbar scroll effect
+        var navbar = document.querySelector(".sticky");
+        window.addEventListener("scroll", function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add("navbar-scrolled");
+            } else {
+                navbar.classList.remove("navbar-scrolled");
+            }
+        });
+
+        // Form Validation
+        var form = document.getElementById("appointment-form");
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            var isValid = true;
+            var name = document.getElementById("name");
+            var phone = document.getElementById("phone");
+            var date = document.getElementById("date");
+            var nameError = document.getElementById("name-error");
+            var phoneError = document.getElementById("phone-error");
+            var dateError = document.getElementById("date-error");
+
+            [name, phone, date].forEach(function(input) { input.classList.remove("input-error"); });
+            [nameError, phoneError, dateError].forEach(function(err) { err.classList.add("hidden"); });
+
+            if (!name.value.trim()) {
+                name.classList.add("input-error");
+                nameError.classList.remove("hidden");
+                isValid = false;
+            }
+            if (!phone.value.trim()) {
+                phone.classList.add("input-error");
+                phoneError.classList.remove("hidden");
+                isValid = false;
+            }
+            if (!date.value) {
+                date.classList.add("input-error");
+                dateError.classList.remove("hidden");
+                isValid = false;
+            }
+
+            if (isValid) {
+                document.getElementById("form-success").classList.remove("hidden");
+                form.reset();
+                setTimeout(function() { document.getElementById("form-success").classList.add("hidden"); }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

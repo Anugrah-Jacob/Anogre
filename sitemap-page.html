@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap | Anogre — Full Site Directory</title>
+    <meta name="description" content="Complete directory of all pages on Anogre.com — main pages, blog articles, and live project demos.">
+    <link rel="icon" type="image/png" href="assets/ChatGPT_Image_Apr_22__2026__07_54_52_AM-removebg-preview.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: { primary: "#6C63FF", secondary: "#00D4FF" }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white dark:bg-[#0a0a0f] text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 bg-grid">
+
+    <!-- Header -->
+    <header id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 px-6 py-4">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-6 py-3" aria-label="Main navigation">
+            <a href="index.html" class="text-2xl font-extrabold tracking-tight group" aria-label="Anogre Home">
+                <span class="gradient-text group-hover:brightness-125 transition-all">Anogre</span>
+            </a>
+            <ul class="hidden md:flex items-center gap-8 font-medium text-sm nav-links">
+                <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+                <li><a href="services.html" class="hover:text-primary transition-colors">Services</a></li>
+                <li><a href="portfolio.html" class="hover:text-primary transition-colors">Work</a></li>
+                <li><a href="blog.html" class="hover:text-primary transition-colors">Blog</a></li>
+                <li><a href="pricing.html" class="hover:text-primary transition-colors">Pricing</a></li>
+                <li><a href="about.html" class="hover:text-primary transition-colors">About</a></li>
+                <li><a href="contact.html" class="hover:text-primary transition-colors">Contact</a></li>
+            </ul>
+            <div class="flex items-center gap-4">
+                <a href="contact.html" class="hidden md:flex btn-premium !py-2.5 !px-6 !text-sm">Get Started</a>
+                <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-1" aria-label="Open mobile menu" aria-expanded="false">
+                    <span class="w-6 h-0.5 bg-current transition-all"></span>
+                    <span class="w-6 h-0.5 bg-current transition-all"></span>
+                    <span class="w-6 h-0.5 bg-current transition-all"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <nav id="mobile-menu" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/80 backdrop-blur-xl opacity-0 scale-95 pointer-events-none transition-all duration-300" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+        <button id="close-menu" class="absolute top-8 right-8 text-4xl p-2 hover:text-primary transition-colors" aria-label="Close menu">&times;</button>
+        <div class="absolute top-8 left-8 text-2xl font-black tracking-tighter"><span class="gradient-text">ANOGRE</span></div>
+        <div class="flex flex-col items-center gap-8 w-full max-w-xs">
+            <a href="index.html" class="text-2xl font-semibold hover:text-primary transition-all">Home</a>
+            <a href="services.html" class="text-2xl font-semibold hover:text-primary transition-all">Services</a>
+            <a href="portfolio.html" class="text-2xl font-semibold hover:text-primary transition-all">Work</a>
+            <a href="blog.html" class="text-2xl font-semibold hover:text-primary transition-all">Blog</a>
+            <a href="pricing.html" class="text-2xl font-semibold hover:text-primary transition-all">Pricing</a>
+            <a href="about.html" class="text-2xl font-semibold hover:text-primary transition-all">About</a>
+            <a href="contact.html" class="text-2xl font-semibold hover:text-primary transition-all">Contact</a>
+        </div>
+    </nav>
+
+    <main class="pt-40 pb-32 px-6">
+        <div class="max-w-5xl mx-auto">
+
+            <!-- Page Header -->
+            <div class="text-center mb-24 reveal">
+                <div class="inline-block px-4 py-1.5 mb-8 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-widest">
+                    ✦ Site Directory
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-6">
+                    Site<span class="gradient-text">map</span>
+                </h1>
+                <p class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto font-medium leading-relaxed">
+                    A complete directory of every page on Anogre — from core pages to live project demos and blog articles.
+                </p>
+            </div>
+
+            <!-- Sitemap Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Main Pages -->
+                <section class="glass rounded-3xl p-8 reveal border border-primary/10">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                        </div>
+                        <h2 class="text-xl font-bold">Main Pages</h2>
+                    </div>
+                    <ul class="space-y-4">
+                        <li><a href="index.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-all"></span>Home</a></li>
+                        <li><a href="about.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-all"></span>About Us</a></li>
+                        <li><a href="services.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-all"></span>Services</a></li>
+                        <li><a href="portfolio.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-all"></span>Portfolio / Work</a></li>
+                        <li><a href="pricing.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-all"></span>Pricing Plans</a></li>
+                        <li><a href="blog.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-all"></span>Blog</a></li>
+                        <li><a href="contact.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-all"></span>Contact</a></li>
+                    </ul>
+                </section>
+
+                <!-- Live Demos -->
+                <section class="glass rounded-3xl p-8 reveal border border-secondary/10" style="transition-delay: 100ms;">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        </div>
+                        <h2 class="text-xl font-bold">Live Demos</h2>
+                    </div>
+                    <ul class="space-y-4">
+                        <li><a href="demo/driving-school-pro.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-secondary transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-secondary/40 group-hover:bg-secondary transition-all"></span>Driving School Pro</a></li>
+                        <li><a href="demo/saas-launchpad.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-secondary transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-secondary/40 group-hover:bg-secondary transition-all"></span>SaaS Launchpad</a></li>
+                        <li><a href="demo/analytics-dashboard.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-secondary transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-secondary/40 group-hover:bg-secondary transition-all"></span>Analytics Dashboard</a></li>
+                        <li><a href="demo/engineer-portfolio.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-secondary transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-secondary/40 group-hover:bg-secondary transition-all"></span>Engineer Portfolio</a></li>
+                        <li><a href="demo/edugate-academy.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-secondary transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-secondary/40 group-hover:bg-secondary transition-all"></span>EduGate Academy</a></li>
+                        <li><a href="demo/flow-ai-assistant.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-secondary transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-secondary/40 group-hover:bg-secondary transition-all"></span>Flow AI Assistant</a></li>
+                        <li><a href="demo/shopvibe-store.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-secondary transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-secondary/40 group-hover:bg-secondary transition-all"></span>ShopVibe Store</a></li>
+                        <li><a href="demo/lifecare-clinic.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-secondary transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-secondary/40 group-hover:bg-secondary transition-all"></span>LifeCare Clinic</a></li>
+                        <li><a href="demo/restaurant-website.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-secondary transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-secondary/40 group-hover:bg-secondary transition-all"></span>L'Élite Restaurant</a></li>
+                    </ul>
+                </section>
+
+                <!-- Blog Articles -->
+                <section class="glass rounded-3xl p-8 reveal border border-emerald-500/10" style="transition-delay: 200ms;">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2zM14 4v4h4"/></svg>
+                        </div>
+                        <h2 class="text-xl font-bold">Blog Articles</h2>
+                    </div>
+                    <ul class="space-y-4">
+                        <li><a href="blog/vibe-engineering-future.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-emerald-500 transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500/40 group-hover:bg-emerald-500 transition-all"></span>Vibe Engineering</a></li>
+                        <li><a href="blog/gamma-ai-presentations.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-emerald-500 transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500/40 group-hover:bg-emerald-500 transition-all"></span>Gamma AI Presentations</a></li>
+                        <li><a href="blog/agentic-ai-rise.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-emerald-500 transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500/40 group-hover:bg-emerald-500 transition-all"></span>Agentic AI Rise</a></li>
+                        <li><a href="blog/ai-native-architecture.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-emerald-500 transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500/40 group-hover:bg-emerald-500 transition-all"></span>AI-Native Architecture</a></li>
+                        <li><a href="blog/nextjs-2026-performance.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-emerald-500 transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500/40 group-hover:bg-emerald-500 transition-all"></span>Next.js 2026 Performance</a></li>
+                        <li><a href="blog/micro-saas-ai-agents.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-emerald-500 transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500/40 group-hover:bg-emerald-500 transition-all"></span>Micro-SaaS AI Agents</a></li>
+                        <li><a href="blog/vertical-saas-rise.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-emerald-500 transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500/40 group-hover:bg-emerald-500 transition-all"></span>Vertical SaaS Rise</a></li>
+                        <li><a href="blog/cybersecurity-ai-age.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-emerald-500 transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500/40 group-hover:bg-emerald-500 transition-all"></span>Cybersecurity in AI Age</a></li>
+                        <li><a href="blog/death-of-search-bar.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-emerald-500 transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500/40 group-hover:bg-emerald-500 transition-all"></span>Death of the Search Bar</a></li>
+                        <li><a href="blog/serverless-databases-2026.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-emerald-500 transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500/40 group-hover:bg-emerald-500 transition-all"></span>Serverless Databases 2026</a></li>
+                        <li><a href="blog/sustainable-engineering-2026.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-emerald-500 transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500/40 group-hover:bg-emerald-500 transition-all"></span>Sustainable Engineering</a></li>
+                        <li><a href="blog/web3-ai-decentralized.html" class="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-emerald-500 transition-all group"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500/40 group-hover:bg-emerald-500 transition-all"></span>Web3 AI Decentralized</a></li>
+                    </ul>
+                </section>
+
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="mt-20 glass rounded-3xl p-8 flex flex-wrap justify-center gap-12 md:gap-20 reveal border border-white/5">
+                <div class="text-center">
+                    <div class="text-3xl font-black gradient-text">7</div>
+                    <div class="text-xs font-semibold uppercase tracking-widest text-slate-500 mt-1">Main Pages</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-black text-secondary">9</div>
+                    <div class="text-xs font-semibold uppercase tracking-widest text-slate-500 mt-1">Live Demos</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-black text-emerald-500">12</div>
+                    <div class="text-xs font-semibold uppercase tracking-widest text-slate-500 mt-1">Blog Articles</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-black text-amber-500">28</div>
+                    <div class="text-xs font-semibold uppercase tracking-widest text-slate-500 mt-1">Total Pages</div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-24 px-6 border-t border-slate-200 dark:border-white/5 bg-slate-50/20 dark:bg-[#0a0a0f]">
+        <div class="max-w-7xl mx-auto">
+            <div class="pt-10 border-t border-slate-200 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-slate-500 text-sm font-medium">© 2026 Anogre Global. All rights reserved.</p>
+                <div class="flex gap-8 text-xs font-bold uppercase tracking-widest opacity-40">
+                    <a href="contact.html" class="hover:text-primary transition-all">Privacy</a>
+                    <a href="contact.html" class="hover:text-primary transition-all">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

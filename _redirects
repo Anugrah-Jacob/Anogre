@@ -1,0 +1,3 @@
+# Cloudflare Pages — Redirects
+# Trailing slash normalization
+/index  /  301

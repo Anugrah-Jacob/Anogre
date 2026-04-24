@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Élite Gastronomique | Fine Dining Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: '#C5A059',
+                        dark: '#0A0A0A',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0A0A0A; color: #F5F5F5; }
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(10,10,10,0.4), rgba(10,10,10,1));
+        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #C5A059;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-500 py-6 px-8 flex justify-between items-center glass border-none">
+        <div class="text-2xl font-serif italic tracking-widest text-gold">L'Élite</div>
+        <div class="hidden md:flex gap-10 text-xs font-semibold uppercase tracking-widest">
+            <a href="#about" class="nav-link relative">Story</a>
+            <a href="#menu" class="nav-link relative">Menu</a>
+            <a href="#reservation" class="nav-link relative text-gold border border-gold/30 px-6 py-2 hover:bg-gold hover:text-dark transition-all duration-300">Reserve</a>
+        </div>
+        <button class="md:hidden text-gold">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="../assets/restaurant/hero.png" alt="Interior" class="w-full h-full object-cover scale-110 animate-[pulse_10s_infinite]">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+        <div class="relative text-center px-6 max-w-4xl">
+            <span class="text-gold uppercase tracking-[0.5em] text-xs mb-6 block reveal">Art of Gastronomy</span>
+            <h1 class="text-6xl md:text-8xl font-serif mb-8 leading-tight reveal" style="transition-delay: 200ms;">Elegance in <br><span class="italic">Every Bite</span></h1>
+            <p class="text-lg text-white/60 max-w-xl mx-auto mb-10 font-light leading-relaxed reveal" style="transition-delay: 400ms;">Experience the pinnacle of culinary craftsmanship where tradition meets modern innovation in the heart of the city.</p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center reveal" style="transition-delay: 600ms;">
+                <a href="#menu" class="bg-gold text-dark px-10 py-4 font-semibold uppercase tracking-widest text-xs hover:bg-white transition-all duration-300">Discover Menu</a>
+                <a href="#reservation" class="border border-white/20 px-10 py-4 font-semibold uppercase tracking-widest text-xs hover:bg-white hover:text-dark transition-all duration-300">Book a Table</a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 14l-7 7-7-7"></path></svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 px-8 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-20 items-center">
+            <div class="reveal">
+                <span class="text-gold uppercase tracking-widest text-xs mb-4 block">Our Legacy</span>
+                <h2 class="text-4xl md:text-5xl font-serif mb-8 leading-snug">The Pursuit of <br><span class="italic text-gold">Perfection</span></h2>
+                <p class="text-white/50 mb-6 leading-relaxed">Founded in 1984, L'Élite has been a sanctuary for those who seek the extraordinary. Our philosophy is simple: source the finest ingredients, treat them with respect, and serve them with soul.</p>
+                <p class="text-white/50 mb-10 leading-relaxed">Every dish tells a story of heritage and passion, curated by our world-renowned chefs who travel the globe to bring back forgotten flavors and modern techniques.</p>
+                <div class="grid grid-cols-2 gap-8 border-t border-white/5 pt-10">
+                    <div>
+                        <div class="text-3xl font-serif text-gold mb-1">3</div>
+                        <div class="text-[10px] uppercase tracking-widest text-white/40">Michelin Stars</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-serif text-gold mb-1">20+</div>
+                        <div class="text-[10px] uppercase tracking-widest text-white/40">Years Excellence</div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative reveal" style="transition-delay: 200ms;">
+                <div class="aspect-[4/5] overflow-hidden">
+                    <img src="../assets/restaurant/dish1.png" alt="Signature Dish" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000">
+                </div>
+                <div class="absolute -bottom-10 -left-10 glass p-10 hidden lg:block">
+                    <p class="font-serif italic text-xl mb-2 text-gold">"Cooking is like love. <br>It should be entered into <br>with abandon or not at all."</p>
+                    <span class="text-[10px] uppercase tracking-widest text-white/40">— Chef Julian Vasseur</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Preview -->
+    <section id="menu" class="py-32 bg-[#050505]">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-20 reveal">
+                <span class="text-gold uppercase tracking-widest text-xs mb-4 block">Selection</span>
+                <h2 class="text-4xl md:text-6xl font-serif mb-6">The Tasting Menu</h2>
+                <p class="text-white/40 max-w-xl mx-auto font-light">A seasonal journey through flavors and textures.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-x-24 gap-y-12">
+                <!-- Menu Item -->
+                <div class="group reveal">
+                    <div class="flex justify-between items-baseline border-b border-white/5 pb-4 group-hover:border-gold/30 transition-all">
+                        <h3 class="text-xl font-serif">Wild Mushroom Risotto</h3>
+                        <span class="text-gold font-light">$38</span>
+                    </div>
+                    <p class="mt-4 text-white/30 text-sm font-light leading-relaxed italic">Truffle oil, 24-month aged parmesan, toasted hazelnuts.</p>
+                </div>
+                <div class="group reveal" style="transition-delay: 100ms;">
+                    <div class="flex justify-between items-baseline border-b border-white/5 pb-4 group-hover:border-gold/30 transition-all">
+                        <h3 class="text-xl font-serif">Seared Scallops</h3>
+                        <span class="text-gold font-light">$42</span>
+                    </div>
+                    <p class="mt-4 text-white/30 text-sm font-light leading-relaxed italic">Cauliflower silk, pancetta crisp, lemon-caper emulsion.</p>
+                </div>
+                <div class="group reveal" style="transition-delay: 200ms;">
+                    <div class="flex justify-between items-baseline border-b border-white/5 pb-4 group-hover:border-gold/30 transition-all">
+                        <h3 class="text-xl font-serif">Wagyu Beef Filet</h3>
+                        <span class="text-gold font-light">$68</span>
+                    </div>
+                    <p class="mt-4 text-white/30 text-sm font-light leading-relaxed italic">Bone marrow crust, smoked potato, bordelaise sauce.</p>
+                </div>
+                <div class="group reveal" style="transition-delay: 300ms;">
+                    <div class="flex justify-between items-baseline border-b border-white/5 pb-4 group-hover:border-gold/30 transition-all">
+                        <h3 class="text-xl font-serif">Lobster Thermidor</h3>
+                        <span class="text-gold font-light">$54</span>
+                    </div>
+                    <p class="mt-4 text-white/30 text-sm font-light leading-relaxed italic">Atlantic lobster, brandy cream, gruyère glaze.</p>
+                </div>
+            </div>
+            
+            <div class="mt-20 text-center reveal">
+                <a href="#" class="text-xs uppercase tracking-[0.3em] font-semibold text-gold hover:text-white transition-all">View Full Wine List &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="py-32 px-8">
+        <div class="max-w-4xl mx-auto glass p-12 md:p-20 relative overflow-hidden reveal">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+            <div class="relative z-10">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-serif mb-4">Reserve Your Table</h2>
+                    <p class="text-white/40 text-sm font-light uppercase tracking-widest">Limited availability for dinner service</p>
+                </div>
+                <form class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest text-white/40 block mb-3">Date</label>
+                            <input type="date" class="w-full bg-white/5 border border-white/10 px-4 py-3 text-sm focus:outline-none focus:border-gold/50 transition-all">
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest text-white/40 block mb-3">Guests</label>
+                            <select class="w-full bg-white/5 border border-white/10 px-4 py-3 text-sm focus:outline-none focus:border-gold/50 transition-all appearance-none">
+                                <option>2 Guests</option>
+                                <option>4 Guests</option>
+                                <option>6+ Guests</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest text-white/40 block mb-3">Contact Name</label>
+                            <input type="text" placeholder="John Doe" class="w-full bg-white/5 border border-white/10 px-4 py-3 text-sm focus:outline-none focus:border-gold/50 transition-all">
+                        </div>
+                        <div class="flex items-end">
+                            <button class="w-full bg-gold text-dark py-4 text-xs font-bold uppercase tracking-widest hover:bg-white transition-all duration-500">Confirm Booking</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center px-8">
+        <div class="text-xl font-serif italic tracking-widest text-gold mb-8">L'Élite</div>
+        <div class="flex flex-col md:flex-row justify-center gap-10 text-[10px] uppercase tracking-[0.2em] font-semibold text-white/40 mb-12">
+            <p>128 Gourmet Ave, Cuisine District, NY</p>
+            <p>Res: +1 (212) 555-0198</p>
+            <p>Open: Tue - Sun / 18:00 - 23:00</p>
+        </div>
+        <div class="flex justify-center gap-8 mb-12">
+            <a href="#" class="text-white/20 hover:text-gold transition-all">Instagram</a>
+            <a href="#" class="text-white/20 hover:text-gold transition-all">Facebook</a>
+            <a href="#" class="text-white/20 hover:text-gold transition-all">Michelin Guide</a>
+        </div>
+        <p class="text-[9px] uppercase tracking-widest text-white/20">&copy; 2026 L'Élite Restaurant Group. Crafted by Anogre.</p>
+    </footer>
+
+    <script>
+        // Reveal animation on scroll
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-dark/80', 'py-4');
+                nav.classList.remove('py-6');
+            } else {
+                nav.classList.remove('bg-dark/80', 'py-4');
+                nav.classList.add('py-6');
+            }
+        });
+    </script>
+</body>
+</html>

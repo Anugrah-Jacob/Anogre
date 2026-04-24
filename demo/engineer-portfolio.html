@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alex Kim – Frontend Developer</title>
+    <link rel="stylesheet" href="engineer-portfolio.css" />
+  </head>
+  <body>
+    <a href="#content" class="skip-link">Skip to content</a>
+    <header class="site-header" aria-label="Site header">
+      <div class="container header-wrap">
+        <div class="brand">
+          <span class="logo" aria-label="Logo">AK</span>
+          <span class="brand-name">Alex Kim</span>
+        </div>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content">
+      <section class="hero container" aria-label="Hero">
+        <div class="hero-content">
+          <h1 class="hero-name">Alex Kim</h1>
+          <p class="hero-role">Frontend Engineer • UI/UX Enthusiast</p>
+          <p class="hero-intro">
+            I craft accessible, fast web interfaces with a focus on clean design
+            and thoughtful interaction. I collaborate with product teams to turn
+            ideas into polished, production-ready experiences.
+          </p>
+          <a class="btn" href="#projects" aria-label="View projects"
+            >View Projects</a
+          >
+        </div>
+      </section>
+
+      <section id="projects" class="projects container" aria-label="Projects">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-sub">
+          Selected work demonstrating practical UI solutions and solid
+          fundamentals.
+        </p>
+        <div class="grid">
+          <!-- Project Card 1 -->
+          <article class="card">
+            <div class="card-media" aria-label="PulseTrack screenshot">
+              <svg
+                viewBox="0 0 400 200"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="xMidYMid slice"
+                role="img"
+                aria-label="PulseTrack UI preview"
+              >
+                <defs>
+                  <linearGradient id="g1" x1="0" x2="1" y1="0" y2="0">
+                    <stop stop-color="#4f46e5" offset="0" />
+                    <stop stop-color="#06b6d4" offset="1" />
+                  </linearGradient>
+                </defs>
+                <rect width="100%" height="100%" fill="#0b1020" />
+                <path
+                  d="M0,120 C60,90 120,150 180,110 S300,170 360,120"
+                  fill="none"
+                  stroke="url(#g1)"
+                  stroke-width="8"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">
+                PulseTrack – Personal Finance Dashboard
+              </h3>
+              <p class="card-desc">
+                Real-time budgeting, goals, and spend tracking with offline
+                persistence and accessible charts.
+              </p>
+              <ul class="techs" aria-label="Tech stack">
+                <li>React</li>
+                <li>TypeScript</li>
+                <li>Node.js</li>
+                <li>PostgreSQL</li>
+              </ul>
+              <div class="card-actions">
+                <a href="#" class="btn small" aria-label="PulseTrack live demo"
+                  >Live</a
+                >
+                <a href="#" class="link" aria-label="PulseTrack source code"
+                  >Source</a
+                >
+              </div>
+            </div>
+          </article>
+          <!-- Project Card 2 -->
+          <article class="card">
+            <div class="card-media" aria-label="Atlas Trek screenshot">
+              <svg
+                viewBox="0 0 400 200"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="xMidYMid slice"
+                role="img"
+                aria-label="Atlas Trek UI preview"
+              >
+                <defs>
+                  <radialGradient id="g2" cx="50%" cy="50%" r="50%">
+                    <stop stop-color="#22c55e" offset="0" />
+                    <stop stop-color="#0ea5e9" offset="1" />
+                  </radialGradient>
+                </defs>
+                <rect width="100%" height="100%" fill="#0b1020" />
+                <circle
+                  cx="100"
+                  cy="120"
+                  r="60"
+                  fill="url(#g2)"
+                  opacity="0.9"
+                />
+                <path
+                  d="M140 180 L260 60"
+                  stroke="#fff"
+                  stroke-width="6"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Atlas Trek – Travel Planner</h3>
+              <p class="card-desc">
+                Planning flow, itinerary optimizations, and map integrations for
+                seamless trips.
+              </p>
+              <ul class="techs" aria-label="Tech stack">
+                <li>Next.js</li>
+                <li>GraphQL</li>
+                <li>Tailwind CSS</li>
+              </ul>
+              <div class="card-actions">
+                <a href="#" class="btn small" aria-label="Atlas Trek live demo"
+                  >Live</a
+                >
+                <a href="#" class="link" aria-label="Atlas Trek source"
+                  >Source</a
+                >
+              </div>
+            </div>
+          </article>
+          <!-- Project Card 3 -->
+          <article class="card">
+            <div class="card-media" aria-label="OpenCanvas screenshot">
+              <svg
+                viewBox="0 0 400 200"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="xMidYMid slice"
+                role="img"
+                aria-label="OpenCanvas UI preview"
+              >
+                <rect width="100%" height="100%" fill="#0b1020" />
+                <rect
+                  x="60"
+                  y="40"
+                  width="280"
+                  height="60"
+                  rx="8"
+                  fill="#1e3a8a"
+                />
+                <rect
+                  x="60"
+                  y="120"
+                  width="180"
+                  height="40"
+                  rx="6"
+                  fill="#2563eb"
+                />
+              </svg>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">OpenCanvas – Collaborative Whiteboard</h3>
+              <p class="card-desc">
+                Realtime drawing, presence indicators, and simple API for
+                persistence.
+              </p>
+              <ul class="techs" aria-label="Tech stack">
+                <li>React</li>
+                <li>Socket.io</li>
+                <li>Express</li>
+              </ul>
+              <div class="card-actions">
+                <a href="#" class="btn small" aria-label="OpenCanvas live demo"
+                  >Live</a
+                >
+                <a href="#" class="link" aria-label="OpenCanvas source"
+                  >Source</a
+                >
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="skills container" aria-label="Skills">
+        <h2 class="section-title">Skills</h2>
+        <p class="section-sub">
+          Strong foundations across front-end, design, and collaboration.
+        </p>
+        <div class="grid skills-grid">
+          <div class="skill">
+            <div class="skill-header">
+              <span>JavaScript / TypeScript</span>
+              <span>92%</span>
+            </div>
+            <div class="progress"><span style="width: 92%"></span></div>
+          </div>
+          <div class="skill">
+            <div class="skill-header">
+              <span>React</span>
+              <span>90%</span>
+            </div>
+            <div class="progress"><span style="width: 90%"></span></div>
+          </div>
+          <div class="skill">
+            <div class="skill-header">
+              <span>UI/UX Design</span>
+              <span>85%</span>
+            </div>
+            <div class="progress"><span style="width: 85%"></span></div>
+          </div>
+          <div class="skill">
+            <div class="skill-header">
+              <span>Node.js</span>
+              <span>80%</span>
+            </div>
+            <div class="progress"><span style="width: 80%"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about container" aria-label="About">
+        <h2 class="section-title">About</h2>
+        <p class="section-sub">
+          I’m a developer who thrives on clarity and craft. My approach combines
+          product thinking with practical engineering to deliver delightful,
+          reliable software. I value clean code, thoughtful architecture, and
+          accessible design.
+        </p>
+      </section>
+
+      <section id="contact" class="contact container" aria-label="Contact">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-sub">
+          Have a project in mind? Send me a note and I’ll respond within 1–2
+          business days.
+        </p>
+        <form
+          id="contact-form"
+          class="contact-form"
+          autocomplete="on"
+          novalidate
+        >
+          <div class="field-row">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Your full name"
+            />
+          </div>
+          <div class="field-row">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="you@example.com"
+            />
+          </div>
+          <div class="field-row full">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              placeholder="Tell me about your project..."
+            ></textarea>
+          </div>
+          <button type="submit" class="btn" aria-label="Send message">
+            Send Message
+          </button>
+          <p id="form-status" class="form-status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer" aria-label="Site footer">
+      <div class="container footer-wrap">
+        <span>© 2026 Alex Kim. All rights reserved.</span>
+      </div>
+    </footer>
+
+    <script src="engineer-portfolio.js"></script>
+  </body>
+</html>
